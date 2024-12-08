@@ -1,0 +1,120 @@
+[gd_scene load_steps=19 format=3 uid="uid://b5gslsxpi4yhg"]
+
+[ext_resource type="PackedScene" uid="uid://d1kjdj38xpbr" path="res://Scenes/Objects/Kitchen/dialogue_trigger_kitchen1.tscn" id="2_6ju3d"]
+[ext_resource type="PackedScene" uid="uid://dx3uhy2pqmmnh" path="res://Scenes/Objects/Kitchen/dialogue_trigger_kitchen2.tscn" id="2_i4o4d"]
+[ext_resource type="Texture2D" uid="uid://bhwu0koi4ha7c" path="res://Assets/Environment/Kitchen/Kitchen.png" id="2_vj2qn"]
+[ext_resource type="Texture2D" uid="uid://0mo42uvk0y8o" path="res://Assets/Environment/Kitchen/Kitchen Object.png" id="3_f5lpy"]
+[ext_resource type="PackedScene" uid="uid://bt1c88sgc2oho" path="res://Scenes/Objects/Kitchen/kitchen_to_living.tscn" id="3_jopq7"]
+[ext_resource type="Texture2D" uid="uid://citl0nnjjcky2" path="res://Assets/Environment/Kitchen/Kitchen Dark.png" id="3_kcpia"]
+[ext_resource type="Texture2D" uid="uid://cag2nbn1rh4ju" path="res://Assets/Environment/Kitchen/Kitchen Glow.png" id="4_0o4u1"]
+[ext_resource type="PackedScene" uid="uid://djvghjfph01i0" path="res://Scenes/Objects/Kitchen/kitchen_whiskey.tscn" id="4_hntju"]
+[ext_resource type="PackedScene" uid="uid://ccfvgs8qktcxh" path="res://Scenes/Objects/Kitchen/kitchen_dada.tscn" id="4_kf0e2"]
+[ext_resource type="PackedScene" uid="uid://7sifwyqljw8q" path="res://Scenes/Objects/Kitchen/kitchen_lasagna.tscn" id="5_frwig"]
+[ext_resource type="PackedScene" uid="uid://ndhmt6goad8r" path="res://Scenes/Objects/Kitchen/kitchen_fridge_1.tscn" id="5_jghr8"]
+[ext_resource type="PackedScene" uid="uid://bkmgwhxlehwtl" path="res://Scenes/Character/Timmy.tscn" id="5_sg82h"]
+[ext_resource type="PackedScene" uid="uid://cldfydh34b1gt" path="res://Scenes/Objects/Kitchen/kitchen_trash_bin.tscn" id="10_a4xi8"]
+
+[sub_resource type="Gradient" id="Gradient_xuog8"]
+offsets = PackedFloat32Array(0, 0.107143, 1)
+colors = PackedColorArray(0.04, 0.0273333, 0, 1, 0.108571, 0.0944286, 0.0642857, 1, 1, 0.966667, 0.9, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oayu8"]
+gradient = SubResource("Gradient_xuog8")
+
+[sub_resource type="Environment" id="Environment_bwdkg"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+glow_bloom = 0.1
+fog_light_color = Color(0.698573, 0.506062, 0.30073, 1)
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture2D_oayu8")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_irbla"]
+size = Vector2(20, 203.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ke0fo"]
+size = Vector2(20, 230)
+
+[node name="scene_2_kitchen" type="Node"]
+
+[node name="Timmy" parent="." instance=ExtResource("5_sg82h")]
+z_index = 2
+position = Vector2(26, 180)
+
+[node name="Markers" type="Node" parent="."]
+
+[node name="Dada Text Marker 1" type="Marker2D" parent="Markers"]
+position = Vector2(288, 164)
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_bwdkg")
+
+[node name="dialogue_trigger_kitchen2" parent="Environment" node_paths=PackedStringArray("player", "marker") instance=ExtResource("2_i4o4d")]
+position = Vector2(139, 226)
+player = NodePath("../../Timmy")
+marker = NodePath("../../Markers/Dada Text Marker 1")
+
+[node name="dialogue_trigger_kitchen1" parent="Environment" node_paths=PackedStringArray("player", "marker") instance=ExtResource("2_6ju3d")]
+z_index = 5
+position = Vector2(396, 226)
+player = NodePath("../../Timmy")
+marker = NodePath("../../Markers/Dada Text Marker 1")
+
+[node name="kitchen_to_living" parent="Environment" instance=ExtResource("3_jopq7")]
+position = Vector2(32, 203)
+
+[node name="Table" type="Sprite2D" parent="Environment"]
+z_index = 6
+position = Vector2(348, 200)
+texture = ExtResource("3_f5lpy")
+hframes = 4
+vframes = 3
+
+[node name="kitchen_whiskey" parent="Environment" instance=ExtResource("4_hntju")]
+z_index = 5
+position = Vector2(324, 192)
+
+[node name="kitchen_dada" parent="Environment" instance=ExtResource("4_kf0e2")]
+z_index = 4
+position = Vector2(346, 208)
+
+[node name="kitchen_trash_bin" parent="Environment" instance=ExtResource("10_a4xi8")]
+z_index = 1
+position = Vector2(524, 244)
+
+[node name="kitchen_lasagna" parent="Environment" instance=ExtResource("5_frwig")]
+z_index = 1
+position = Vector2(200, 172)
+
+[node name="kitchen_fridge" parent="Environment" instance=ExtResource("5_jghr8")]
+z_index = 1
+position = Vector2(133, 174)
+
+[node name="KitchenDark" type="Sprite2D" parent="Environment"]
+z_index = 7
+position = Vector2(264, 148)
+texture = ExtResource("3_kcpia")
+
+[node name="KitchenGlow" type="Sprite2D" parent="Environment"]
+z_index = 4
+position = Vector2(264, 148)
+texture = ExtResource("4_0o4u1")
+
+[node name="Kitchen" type="Sprite2D" parent="Environment"]
+position = Vector2(264, 148)
+texture = ExtResource("2_vj2qn")
+
+[node name="Borders" type="StaticBody2D" parent="."]
+position = Vector2(-64, 12)
+collision_mask = 2
+
+[node name="Left" type="CollisionShape2D" parent="Borders"]
+position = Vector2(54, 141.875)
+shape = SubResource("RectangleShape2D_irbla")
+
+[node name="Right" type="CollisionShape2D" parent="Borders"]
+position = Vector2(602, 129)
+shape = SubResource("RectangleShape2D_ke0fo")

@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4f2wy5di84ib"]
+
+[ext_resource type="Texture2D" uid="uid://ihg4svplk4tf" path="res://Assets/UI/Choice Textbox.png" id="1_w1blg"]
+[ext_resource type="StyleBox" uid="uid://co0lyt3mqk6fv" path="res://Tres/choice_style_box_texture.tres" id="2_deybd"]
+[ext_resource type="FontFile" uid="uid://cjsl5ktd2air0" path="res://Assets/Fonts/pixel_font.ttf" id="2_fbtr5"]
+[ext_resource type="StyleBox" uid="uid://rb4xf3fmoqbo" path="res://Tres/choice_pressed_style_box_texture.tres" id="3_t2u8v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ylen"]
+texture = ExtResource("1_w1blg")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[node name="Choice" type="HBoxContainer"]
+z_index = 5
+offset_right = 120.0
+offset_bottom = 18.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Choice1" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="Button1" type="Button" parent="Choice1"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.952941, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 0.952941, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_fbtr5")
+theme_override_font_sizes/font_size = 6
+theme_override_styles/focus = ExtResource("3_t2u8v")
+theme_override_styles/hover_pressed_mirrored = ExtResource("3_t2u8v")
+theme_override_styles/hover_pressed = ExtResource("3_t2u8v")
+theme_override_styles/hover_mirrored = ExtResource("2_deybd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4ylen")
+theme_override_styles/pressed_mirrored = ExtResource("3_t2u8v")
+theme_override_styles/pressed = ExtResource("3_t2u8v")
+theme_override_styles/normal_mirrored = ExtResource("2_deybd")
+theme_override_styles/normal = SubResource("StyleBoxTexture_4ylen")
+text = "Do It"
+
+[node name="Choice2" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="Choice2"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.952941, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 0.952941, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_fbtr5")
+theme_override_font_sizes/font_size = 6
+theme_override_styles/focus = ExtResource("3_t2u8v")
+theme_override_styles/hover_pressed_mirrored = ExtResource("3_t2u8v")
+theme_override_styles/hover_pressed = ExtResource("3_t2u8v")
+theme_override_styles/hover_mirrored = ExtResource("2_deybd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4ylen")
+theme_override_styles/pressed_mirrored = ExtResource("3_t2u8v")
+theme_override_styles/pressed = ExtResource("3_t2u8v")
+theme_override_styles/normal_mirrored = ExtResource("2_deybd")
+theme_override_styles/normal = SubResource("StyleBoxTexture_4ylen")
+text = "Do It"

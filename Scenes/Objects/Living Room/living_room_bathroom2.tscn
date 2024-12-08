@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://bdfq6dh2103ci"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Living Room/living_room_bathroom2.gd" id="1_r13m0"]
+[ext_resource type="Texture2D" uid="uid://cgwxr8ipywkc3" path="res://Assets/Environment/Living Room/Living Room Object.png" id="4_f533a"]
+[ext_resource type="Texture2D" uid="uid://fsjstksg7dlg" path="res://Assets/UI/Pointer.png" id="5_y6jf2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjcug"]
+atlas = ExtResource("5_y6jf2")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmnc1"]
+atlas = ExtResource("5_y6jf2")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn27r"]
+atlas = ExtResource("5_y6jf2")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0xt1"]
+atlas = ExtResource("5_y6jf2")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d55g7"]
+atlas = ExtResource("5_y6jf2")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kmbln"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjcug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmnc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn27r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0xt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d55g7")
+}],
+"loop": true,
+"name": &"pointer",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5iog"]
+size = Vector2(12, 18)
+
+[node name="living_room_bathroom2" type="Area2D" groups=["doors"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_r13m0")
+
+[node name="Object" type="Sprite2D" parent="."]
+position = Vector2(-4, 8)
+texture = ExtResource("4_f533a")
+hframes = 4
+vframes = 3
+frame = 6
+
+[node name="Pointer" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 5
+position = Vector2(-4, -80)
+sprite_frames = SubResource("SpriteFrames_kmbln")
+animation = &"pointer"
+
+[node name="Cols" type="CollisionShape2D" parent="."]
+z_index = 5
+position = Vector2(22, 71)
+shape = SubResource("RectangleShape2D_f5iog")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

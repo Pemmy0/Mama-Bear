@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://de864tcu5qg0a"]
+
+[ext_resource type="PackedScene" uid="uid://b5hpr14iaqvu8" path="res://Scenes/Objects/Bathroom/bathroom_toothbrush.tscn" id="2_bq0s6"]
+[ext_resource type="Texture2D" uid="uid://kaxxo047h6d4" path="res://Assets/Environment/Bathroom/Bathroom.png" id="2_cctc5"]
+[ext_resource type="PackedScene" uid="uid://bkmgwhxlehwtl" path="res://Scenes/Character/Timmy.tscn" id="3_lydit"]
+[ext_resource type="PackedScene" uid="uid://bmcjqwqe1i7e" path="res://Scenes/Objects/Bathroom/bathroom_to_living.tscn" id="3_noj7n"]
+[ext_resource type="PackedScene" uid="uid://5shq33122n8v" path="res://Scenes/Objects/Bathroom/bathroom_toilet_1.tscn" id="3_p2qo4"]
+[ext_resource type="PackedScene" uid="uid://cs4ed6bc5tddi" path="res://Scenes/Objects/Bathroom/bathroom_trash_bin_1.tscn" id="5_5hhkf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcl5t"]
+size = Vector2(20, 203.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6y6ht"]
+size = Vector2(20, 230)
+
+[node name="scene_2_bathroom" type="Node"]
+
+[node name="Timmy" parent="." instance=ExtResource("3_lydit")]
+z_index = 5
+position = Vector2(88, 180)
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="bathroom_to_living" parent="Environment" instance=ExtResource("3_noj7n")]
+position = Vector2(100, 203)
+
+[node name="bathroom_toothbrush" parent="Environment" instance=ExtResource("2_bq0s6")]
+z_index = 1
+position = Vector2(210, 176)
+
+[node name="Bathroom" type="Sprite2D" parent="Environment"]
+position = Vector2(264, 148)
+texture = ExtResource("2_cctc5")
+
+[node name="bathroom_toilet_1" parent="Environment" instance=ExtResource("3_p2qo4")]
+position = Vector2(278, 244)
+
+[node name="bathroom_trash_bin_1" parent="Environment" instance=ExtResource("5_5hhkf")]
+position = Vector2(244, 244)
+
+[node name="Borders" type="StaticBody2D" parent="."]
+position = Vector2(-64, 12)
+collision_mask = 2
+
+[node name="Left" type="CollisionShape2D" parent="Borders"]
+position = Vector2(122, 141.875)
+shape = SubResource("RectangleShape2D_rcl5t")
+
+[node name="Right" type="CollisionShape2D" parent="Borders"]
+position = Vector2(534, 129)
+shape = SubResource("RectangleShape2D_6y6ht")

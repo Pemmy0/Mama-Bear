@@ -1,0 +1,102 @@
+[gd_scene load_steps=17 format=3 uid="uid://dss1tkh5k3arq"]
+
+[ext_resource type="Texture2D" uid="uid://b7t1u2mgdjwth" path="res://Assets/Environment/Corridor/Corridor Object.png" id="2_bsiu1"]
+[ext_resource type="PackedScene" uid="uid://bkmgwhxlehwtl" path="res://Scenes/Character/Timmy.tscn" id="2_oxvlr"]
+[ext_resource type="Texture2D" uid="uid://d5noyc817alp" path="res://Assets/Environment/Corridor/Dark n Shine.png" id="5_h0sgb"]
+[ext_resource type="PackedScene" uid="uid://b6j7dwwgbsq4c" path="res://Scenes/Objects/Corridor/corridor_mirror2.tscn" id="5_m0lpb"]
+[ext_resource type="PackedScene" uid="uid://col3maiydg04a" path="res://Scenes/Objects/Corridor/corridor_door2.tscn" id="6_6jny8"]
+[ext_resource type="PackedScene" uid="uid://caguy1c4b6jfo" path="res://Scenes/Objects/Corridor/corridor_to_livingroom2.tscn" id="7_iqs7o"]
+[ext_resource type="AudioStream" uid="uid://c4ncicl26b1w3" path="res://SFX/Door Open.mp3" id="7_vpegb"]
+[ext_resource type="AudioStream" uid="uid://d2ro0a3pwah45" path="res://SFX/Door Close.mp3" id="8_bbie7"]
+[ext_resource type="PackedScene" uid="uid://dlag21axf30do" path="res://Scenes/Objects/Corridor/corridor_cabinet_bot.tscn" id="10_dxrbo"]
+[ext_resource type="PackedScene" uid="uid://bgqxtqeddm5f1" path="res://Scenes/Objects/Corridor/corridor_cabinet_top.tscn" id="11_g42vp"]
+[ext_resource type="Texture2D" uid="uid://2uniaf2mqn3c" path="res://Assets/Environment/Corridor/BG.png" id="17_ufsvd"]
+
+[sub_resource type="Gradient" id="Gradient_utqnu"]
+offsets = PackedFloat32Array(0, 0.107143, 1)
+colors = PackedColorArray(0.04, 0.0273333, 0, 1, 0.108571, 0.0944286, 0.0642857, 1, 1, 0.966667, 0.9, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_glj1r"]
+gradient = SubResource("Gradient_utqnu")
+
+[sub_resource type="Environment" id="Environment_fcm7v"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+glow_bloom = 0.1
+fog_light_color = Color(0.698573, 0.506062, 0.30073, 1)
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture2D_glj1r")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mqnt"]
+size = Vector2(20, 203.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5dnj"]
+size = Vector2(20, 230)
+
+[node name="Scene 2 Corridor" type="Node"]
+
+[node name="Timmy" parent="." instance=ExtResource("2_oxvlr")]
+z_index = 5
+position = Vector2(81, 180)
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_fcm7v")
+
+[node name="Picture" type="Sprite2D" parent="Environment"]
+z_index = 4
+position = Vector2(352, 172)
+texture = ExtResource("2_bsiu1")
+hframes = 4
+vframes = 4
+frame = 5
+
+[node name="Urn" type="Sprite2D" parent="Environment"]
+z_index = 4
+position = Vector2(344, 172)
+texture = ExtResource("2_bsiu1")
+hframes = 4
+vframes = 4
+frame = 7
+
+[node name="corridor_mirror2" parent="Environment" node_paths=PackedStringArray("player") instance=ExtResource("5_m0lpb")]
+z_index = 1
+position = Vector2(374, 136)
+player = NodePath("../../Timmy")
+
+[node name="DarkNShine" type="Sprite2D" parent="Environment"]
+z_index = 7
+position = Vector2(264, 148)
+texture = ExtResource("5_h0sgb")
+
+[node name="Bg" type="Sprite2D" parent="Environment"]
+position = Vector2(264, 148)
+texture = ExtResource("17_ufsvd")
+
+[node name="corridor_door2" parent="Environment" instance=ExtResource("6_6jny8")]
+z_index = 6
+door_open = ExtResource("7_vpegb")
+door_close = ExtResource("8_bbie7")
+
+[node name="corridor_to_livingroom2" parent="Environment" instance=ExtResource("7_iqs7o")]
+position = Vector2(528, 203)
+
+[node name="corridor_corridor_bot" parent="Environment" instance=ExtResource("10_dxrbo")]
+position = Vector2(356, 228)
+
+[node name="corridor_cabinet_top" parent="Environment" instance=ExtResource("11_g42vp")]
+position = Vector2(356, 204)
+
+[node name="Borders" type="StaticBody2D" parent="."]
+position = Vector2(-64, 12)
+collision_mask = 2
+
+[node name="Left" type="CollisionShape2D" parent="Borders"]
+position = Vector2(54, 141.875)
+shape = SubResource("RectangleShape2D_5mqnt")
+
+[node name="Right" type="CollisionShape2D" parent="Borders"]
+position = Vector2(602, 129)
+shape = SubResource("RectangleShape2D_y5dnj")

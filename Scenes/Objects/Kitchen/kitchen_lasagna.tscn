@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://7sifwyqljw8q"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Kitchen/kitchen_lasagna.gd" id="1_cnugp"]
+[ext_resource type="Script" path="res://Singletons/Object Highlight.gd" id="1_q11sp"]
+[ext_resource type="Texture2D" uid="uid://0mo42uvk0y8o" path="res://Assets/Environment/Kitchen/Kitchen Object.png" id="2_xf1fn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3cq5"]
+atlas = ExtResource("2_xf1fn")
+region = Rect2(0, 400, 240, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urtjl"]
+atlas = ExtResource("2_xf1fn")
+region = Rect2(240, 400, 240, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lptsq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3cq5")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urtjl")
+}],
+"loop": true,
+"name": &"Highlight",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66x1h"]
+size = Vector2(34, 4)
+
+[node name="kitchen_lasagna" type="Area2D" groups=["objects"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_cnugp")
+
+[node name="Object Highlight" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_q11sp")
+
+[node name="Object" type="AnimatedSprite2D" parent="Object Highlight"]
+unique_name_in_owner = true
+position = Vector2(-6, -1)
+sprite_frames = SubResource("SpriteFrames_lptsq")
+animation = &"Default"
+offset = Vector2(7, -4)
+
+[node name="Cols2" type="CollisionShape2D" parent="Object Highlight"]
+z_index = 5
+position = Vector2(-9, -2)
+shape = SubResource("RectangleShape2D_66x1h")
+
+[node name="Cols" type="CollisionShape2D" parent="."]
+z_index = 5
+position = Vector2(-9, -2)
+shape = SubResource("RectangleShape2D_66x1h")
+
+[connection signal="body_entered" from="Object Highlight" to="Object Highlight" method="_on_body_entered"]
+[connection signal="body_exited" from="Object Highlight" to="Object Highlight" method="_on_body_exited"]

@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgqxtqeddm5f1"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Corridor/corridor_cabinet_top.gd" id="1_o2hxk"]
+[ext_resource type="Script" path="res://Singletons/Object Highlight.gd" id="2_o0nbw"]
+[ext_resource type="Texture2D" uid="uid://b7t1u2mgdjwth" path="res://Assets/Environment/Corridor/Corridor Object.png" id="3_scamx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hggyc"]
+atlas = ExtResource("3_scamx")
+region = Rect2(600, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygbij"]
+atlas = ExtResource("3_scamx")
+region = Rect2(0, 600, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ywse1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hggyc")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygbij")
+}],
+"loop": true,
+"name": &"Highlight",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66x1h"]
+size = Vector2(26, 8)
+
+[node name="corridor_cabinet_top" type="Area2D" groups=["objects"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_o2hxk")
+
+[node name="Object Highlight" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_o0nbw")
+
+[node name="Object" type="AnimatedSprite2D" parent="Object Highlight"]
+unique_name_in_owner = true
+position = Vector2(-3, -10)
+sprite_frames = SubResource("SpriteFrames_ywse1")
+animation = &"Default"
+offset = Vector2(7, -4)
+
+[node name="Cols2" type="CollisionShape2D" parent="Object Highlight"]
+z_index = 5
+position = Vector2(35, 4)
+shape = SubResource("RectangleShape2D_66x1h")
+
+[node name="Cols" type="CollisionShape2D" parent="."]
+z_index = 5
+position = Vector2(35, 4)
+shape = SubResource("RectangleShape2D_66x1h")
+
+[connection signal="body_entered" from="Object Highlight" to="Object Highlight" method="_on_body_entered"]
+[connection signal="body_exited" from="Object Highlight" to="Object Highlight" method="_on_body_exited"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ducgklg0bkf57"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Corridor/dialogue_trigger_corridor_1.gd" id="1_a7051"]
+[ext_resource type="AudioStream" uid="uid://crpkfhopcoi2s" path="res://SFX/Glass Smash.mp3" id="2_0hocx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynwlf"]
+size = Vector2(3, 36)
+
+[node name="dialogue_trigger_bedroom1" type="Area2D" groups=["dialogue trigger"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_a7051")
+
+[node name="Cols" type="CollisionShape2D" parent="."]
+z_index = 5
+shape = SubResource("RectangleShape2D_ynwlf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0hocx")
+volume_db = -3.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

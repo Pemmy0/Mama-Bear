@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://dt1r678o2u02q"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Parent Room/parent_bedroom_teddy.gd" id="1_0gsxn"]
+[ext_resource type="Script" path="res://Singletons/Object Highlight.gd" id="2_g7k57"]
+[ext_resource type="Texture2D" uid="uid://lkndh5ijsd8n" path="res://Assets/Environment/Parents Room/Parents Object.png" id="2_jp4mk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eq1ox"]
+atlas = ExtResource("2_jp4mk")
+region = Rect2(0, 400, 240, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cyo8"]
+atlas = ExtResource("2_jp4mk")
+region = Rect2(240, 400, 240, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lptsq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eq1ox")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cyo8")
+}],
+"loop": true,
+"name": &"Highlight",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66x1h"]
+size = Vector2(10, 4)
+
+[node name="parent_room_teddy" type="Area2D" groups=["objects"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_0gsxn")
+
+[node name="Object Highlight" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_g7k57")
+
+[node name="Object" type="AnimatedSprite2D" parent="Object Highlight"]
+unique_name_in_owner = true
+position = Vector2(7, -8)
+sprite_frames = SubResource("SpriteFrames_lptsq")
+animation = &"Default"
+offset = Vector2(7, -4)
+
+[node name="Cols2" type="CollisionShape2D" parent="Object Highlight"]
+z_index = 5
+position = Vector2(-34, -2)
+shape = SubResource("RectangleShape2D_66x1h")
+
+[node name="Cols" type="CollisionShape2D" parent="."]
+z_index = 5
+position = Vector2(-34, -2)
+shape = SubResource("RectangleShape2D_66x1h")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Object Highlight" to="Object Highlight" method="_on_body_entered"]
+[connection signal="body_exited" from="Object Highlight" to="Object Highlight" method="_on_body_exited"]

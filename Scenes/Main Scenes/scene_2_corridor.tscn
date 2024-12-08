@@ -1,0 +1,99 @@
+[gd_scene load_steps=17 format=3 uid="uid://dbdswmbqcq6rr"]
+
+[ext_resource type="Script" path="res://Scripts/Camera/camera_shake.gd" id="1_j1l33"]
+[ext_resource type="Texture2D" uid="uid://d5noyc817alp" path="res://Assets/Environment/Corridor/Dark n Shine.png" id="1_w6cw6"]
+[ext_resource type="Texture2D" uid="uid://2uniaf2mqn3c" path="res://Assets/Environment/Corridor/BG.png" id="2_7jf6w"]
+[ext_resource type="PackedScene" uid="uid://0kq5iiroo0ii" path="res://Scenes/Objects/Corridor/corridor_door.tscn" id="4_4nijo"]
+[ext_resource type="PackedScene" uid="uid://cmjlqk3qcqbag" path="res://Scenes/Objects/Corridor/corridor_boxes.tscn" id="4_hufmi"]
+[ext_resource type="PackedScene" uid="uid://ctyiqppij0q5w" path="res://Scenes/Objects/Corridor/corridor_mirror.tscn" id="5_krjhy"]
+[ext_resource type="PackedScene" uid="uid://dl6kdcdcri001" path="res://Scenes/Objects/Corridor/corridor_urn.tscn" id="6_pd2jt"]
+[ext_resource type="PackedScene" uid="uid://dpfvfuj0m4qla" path="res://Scenes/Objects/Corridor/corridor_picture.tscn" id="7_4yokh"]
+[ext_resource type="PackedScene" uid="uid://1lxfvqx0mss6" path="res://Scenes/Objects/Corridor/corridor_to_livingroom.tscn" id="9_vdje8"]
+[ext_resource type="PackedScene" uid="uid://ducgklg0bkf57" path="res://Scenes/Objects/Corridor/dialogue_trigger_corridor1.tscn" id="10_pmgw8"]
+[ext_resource type="PackedScene" uid="uid://bkmgwhxlehwtl" path="res://Scenes/Character/Timmy.tscn" id="12_a4tgf"]
+
+[sub_resource type="Gradient" id="Gradient_utqnu"]
+offsets = PackedFloat32Array(0, 0.107143, 1)
+colors = PackedColorArray(0.04, 0.0273333, 0, 1, 0.108571, 0.0944286, 0.0642857, 1, 1, 0.966667, 0.9, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_glj1r"]
+gradient = SubResource("Gradient_utqnu")
+
+[sub_resource type="Environment" id="Environment_fcm7v"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+glow_bloom = 0.1
+fog_light_color = Color(0.698573, 0.506062, 0.30073, 1)
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture2D_glj1r")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mqnt"]
+size = Vector2(20, 203.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5dnj"]
+size = Vector2(20, 230)
+
+[node name="Scene 2 Corridor" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(264, 148)
+script = ExtResource("1_j1l33")
+randomStrength = 8.0
+
+[node name="Timmy" parent="." instance=ExtResource("12_a4tgf")]
+z_index = 5
+position = Vector2(81, 180)
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_fcm7v")
+
+[node name="dialogue_trigger_bedroom1" parent="Environment" instance=ExtResource("10_pmgw8")]
+z_index = 1
+position = Vector2(264, 226)
+
+[node name="DarkNShine" type="Sprite2D" parent="Environment"]
+z_index = 7
+position = Vector2(264, 148)
+texture = ExtResource("1_w6cw6")
+
+[node name="corridor_picture" parent="Environment" instance=ExtResource("7_4yokh")]
+z_index = 4
+position = Vector2(350, 180)
+
+[node name="corridor_urn" parent="Environment" instance=ExtResource("6_pd2jt")]
+z_index = 4
+position = Vector2(342, 180)
+
+[node name="corridor_mirror" parent="Environment" node_paths=PackedStringArray("player") instance=ExtResource("5_krjhy")]
+z_index = 1
+position = Vector2(374, 136)
+player = NodePath("../../Timmy")
+
+[node name="corridor_door" parent="Environment" instance=ExtResource("4_4nijo")]
+z_index = 6
+
+[node name="corridor_boxes" parent="Environment" instance=ExtResource("4_hufmi")]
+z_index = 1
+position = Vector2(78, 208)
+
+[node name="corridor_door2" parent="Environment" instance=ExtResource("9_vdje8")]
+position = Vector2(528, 204)
+
+[node name="Bg" type="Sprite2D" parent="Environment"]
+position = Vector2(264, 148)
+texture = ExtResource("2_7jf6w")
+
+[node name="Borders" type="StaticBody2D" parent="."]
+position = Vector2(-64, 12)
+collision_mask = 2
+
+[node name="Left" type="CollisionShape2D" parent="Borders"]
+position = Vector2(54, 141.875)
+shape = SubResource("RectangleShape2D_5mqnt")
+
+[node name="Right" type="CollisionShape2D" parent="Borders"]
+position = Vector2(602, 129)
+shape = SubResource("RectangleShape2D_y5dnj")

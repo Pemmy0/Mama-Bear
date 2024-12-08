@@ -1,0 +1,166 @@
+[gd_scene load_steps=19 format=3 uid="uid://0ju6cvkh73k7"]
+
+[ext_resource type="PackedScene" uid="uid://bkmgwhxlehwtl" path="res://Scenes/Character/Timmy.tscn" id="1_rfqj1"]
+[ext_resource type="Script" path="res://Scripts/Camera/camera_2d.gd" id="2_2orvu"]
+[ext_resource type="PackedScene" uid="uid://2dwoxotklyte" path="res://Scenes/Objects/Living Room/living_room_TV.tscn" id="3_0qjji"]
+[ext_resource type="PackedScene" uid="uid://q0njs2ve7lf8" path="res://Scenes/Objects/Living Room/living_room_kitchen2.tscn" id="3_8d3mx"]
+[ext_resource type="Texture2D" uid="uid://dxvk2kgb83fh7" path="res://Assets/Lights/light.png" id="3_ly2t5"]
+[ext_resource type="PackedScene" uid="uid://bdfq6dh2103ci" path="res://Scenes/Objects/Living Room/living_room_bathroom2.tscn" id="4_clawc"]
+[ext_resource type="Texture2D" uid="uid://cvclym8hba47" path="res://Assets/Lights/Tv Light.png" id="4_w1ut1"]
+[ext_resource type="AudioStream" uid="uid://c4ncicl26b1w3" path="res://SFX/Door Open.mp3" id="5_b1t0h"]
+[ext_resource type="PackedScene" uid="uid://1iyipyukf1hi" path="res://Scenes/Objects/Living Room/living_room_to_corridor2.tscn" id="5_fuh3k"]
+[ext_resource type="PackedScene" uid="uid://m65vsn0q628b" path="res://Scenes/Objects/Living Room/dialogue_trigger_livingroom2.tscn" id="5_qxfwi"]
+[ext_resource type="AudioStream" uid="uid://d2ro0a3pwah45" path="res://SFX/Door Close.mp3" id="6_sywf8"]
+[ext_resource type="PackedScene" uid="uid://bmel8gxvkywr1" path="res://Scenes/Objects/Living Room/living_room_parent_room2.tscn" id="6_tnq4j"]
+[ext_resource type="PackedScene" uid="uid://dijq5yl2bo1m7" path="res://Scenes/Objects/Living Room/living_room_coat.tscn" id="9_tore8"]
+[ext_resource type="Texture2D" uid="uid://cgwxr8ipywkc3" path="res://Assets/Environment/Living Room/Living Room Object.png" id="10_kjekw"]
+[ext_resource type="PackedScene" uid="uid://dv5bggc1xljjc" path="res://Scenes/Objects/Living Room/living_room_dada.tscn" id="11_6c4df"]
+[ext_resource type="Texture2D" uid="uid://cft1d3wgqrb3j" path="res://Assets/Environment/Living Room/Livingroom.png" id="11_ho80s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mqnt"]
+size = Vector2(20, 203.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5dnj"]
+size = Vector2(20, 230)
+
+[node name="Scene 4 Living Room" type="Node"]
+
+[node name="Marker" type="Node" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Marker"]
+position = Vector2(-328, 152)
+
+[node name="Main Environment" type="Node2D" parent="."]
+
+[node name="Timmy" parent="Main Environment" instance=ExtResource("1_rfqj1")]
+z_index = 3
+position = Vector2(284, 180)
+
+[node name="Camera2D" type="Camera2D" parent="Main Environment" node_paths=PackedStringArray("player")]
+position = Vector2(284, 148)
+limit_left = -528
+limit_top = 0
+limit_right = 528
+limit_bottom = 296
+editor_draw_limits = true
+script = ExtResource("2_2orvu")
+player = NodePath("../Timmy")
+
+[node name="Lights" type="Node" parent="Main Environment"]
+
+[node name="PointLight2D" type="PointLight2D" parent="Main Environment/Lights"]
+z_index = 6
+position = Vector2(-458, 164)
+color = Color(0.64, 0.844, 1, 1)
+energy = 0.6
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("3_ly2t5")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Main Environment/Lights"]
+z_index = 6
+position = Vector2(-457, 164)
+color = Color(0.64, 0.844, 1, 1)
+energy = 0.05
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("3_ly2t5")
+texture_scale = 10.0
+
+[node name="PointLight2D4" type="PointLight2D" parent="Main Environment/Lights"]
+z_index = 6
+position = Vector2(-457, 164)
+color = Color(0.64, 0.844, 1, 1)
+energy = 0.05
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("3_ly2t5")
+texture_scale = 10.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Main Environment/Lights"]
+z_index = 6
+position = Vector2(-464, 160)
+color = Color(0.64, 0.844, 1, 1)
+energy = 0.4
+shadow_filter = 1
+texture = ExtResource("4_w1ut1")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Main Environment/Lights"]
+color = Color(0.2376, 0.2915, 0.33, 1)
+
+[node name="Environment" type="Node" parent="Main Environment"]
+
+[node name="dialogue_trigger_livingroom2" parent="Main Environment/Environment" node_paths=PackedStringArray("player", "marker") instance=ExtResource("5_qxfwi")]
+z_index = 5
+position = Vector2(-426, 225)
+player = NodePath("../../Timmy")
+marker = NodePath("../../../Marker/Marker2D")
+
+[node name="living_room_kitchen2" parent="Main Environment/Environment" instance=ExtResource("3_8d3mx")]
+position = Vector2(-104, 164)
+
+[node name="living_room_bathroom2" parent="Main Environment/Environment" instance=ExtResource("4_clawc")]
+position = Vector2(-224, 164)
+door_open = ExtResource("5_b1t0h")
+door_close = ExtResource("6_sywf8")
+
+[node name="living_room_to_corridor2" parent="Main Environment/Environment" instance=ExtResource("5_fuh3k")]
+position = Vector2(282, 244)
+
+[node name="living_room_parent_room2" parent="Main Environment/Environment" instance=ExtResource("6_tnq4j")]
+z_index = 5
+position = Vector2(184, 176)
+door_open = ExtResource("5_b1t0h")
+door_close = ExtResource("6_sywf8")
+
+[node name="living_room_TV" parent="Main Environment/Environment" instance=ExtResource("3_0qjji")]
+z_index = 1
+position = Vector2(-460, 188)
+
+[node name="living_room_coat" parent="Main Environment/Environment" instance=ExtResource("9_tore8")]
+z_index = 1
+position = Vector2(480, 160)
+
+[node name="Table" type="Sprite2D" parent="Main Environment/Environment"]
+z_index = 5
+position = Vector2(-412, 208)
+texture = ExtResource("10_kjekw")
+hframes = 4
+vframes = 3
+frame = 10
+
+[node name="Ashtray" type="Sprite2D" parent="Main Environment/Environment"]
+z_index = 5
+position = Vector2(-408, 188)
+texture = ExtResource("10_kjekw")
+hframes = 4
+vframes = 3
+
+[node name="Couch" type="Sprite2D" parent="Main Environment/Environment"]
+z_index = 4
+position = Vector2(-320, 196)
+texture = ExtResource("10_kjekw")
+hframes = 4
+vframes = 3
+frame = 4
+
+[node name="Livingroom" type="Sprite2D" parent="Main Environment/Environment"]
+position = Vector2(0, 148)
+texture = ExtResource("11_ho80s")
+
+[node name="living_room_dada" parent="Main Environment/Environment" instance=ExtResource("11_6c4df")]
+z_index = 4
+position = Vector2(-334, 164)
+
+[node name="Borders" type="StaticBody2D" parent="Main Environment"]
+z_index = 1
+position = Vector2(-64, 12)
+collision_mask = 2
+
+[node name="Left" type="CollisionShape2D" parent="Main Environment/Borders"]
+position = Vector2(-474, 142)
+shape = SubResource("RectangleShape2D_5mqnt")
+
+[node name="Right" type="CollisionShape2D" parent="Main Environment/Borders"]
+position = Vector2(602, 129)
+shape = SubResource("RectangleShape2D_y5dnj")

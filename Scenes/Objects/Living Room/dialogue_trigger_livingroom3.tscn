@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://buc7sm2qh2wbo"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Living Room/dialogue_trigger_livingroom_3.gd" id="1_8gv5i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynwlf"]
+size = Vector2(3, 36)
+
+[node name="dialogue_trigger_livingroom2" type="Area2D" groups=["dialogue trigger"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_8gv5i")
+
+[node name="Cols" type="CollisionShape2D" parent="."]
+z_index = 5
+shape = SubResource("RectangleShape2D_ynwlf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

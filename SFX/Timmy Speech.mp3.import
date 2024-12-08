@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dstgums8m6icn"
+path="res://.godot/imported/Timmy Speech.mp3-488ed7ebf0feb48a1ca9fc649b79e17e.mp3str"
+
+[deps]
+
+source_file="res://SFX/Timmy Speech.mp3"
+dest_files=["res://.godot/imported/Timmy Speech.mp3-488ed7ebf0feb48a1ca9fc649b79e17e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

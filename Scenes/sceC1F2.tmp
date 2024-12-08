@@ -1,0 +1,95 @@
+[gd_scene load_steps=15 format=3 uid="uid://byfybpnapghvd"]
+
+[ext_resource type="PackedScene" uid="uid://bkmgwhxlehwtl" path="res://Scenes/Timmy.tscn" id="1_l1c47"]
+[ext_resource type="Texture2D" uid="uid://cft1d3wgqrb3j" path="res://Assets/Environment/Living Room/Livingroom.png" id="2_k5xdo"]
+[ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="2_uassv"]
+[ext_resource type="PackedScene" uid="uid://cdi64cgdxlswg" path="res://Scenes/Objects/Living Room/living_room_fam_pic.tscn" id="3_g6rs8"]
+[ext_resource type="PackedScene" uid="uid://oejhbe84p1sg" path="res://Scenes/Objects/Living Room/living_room_parent_room.tscn" id="3_xwcq3"]
+[ext_resource type="PackedScene" uid="uid://ck2p6prxjo17h" path="res://Scenes/Objects/Living Room/living_room_couch.tscn" id="4_ncpk5"]
+[ext_resource type="PackedScene" uid="uid://2m1g81g1otf1" path="res://Scenes/Objects/Living Room/living_room_to_corridor.tscn" id="4_t2b65"]
+[ext_resource type="PackedScene" uid="uid://bpwuj7v7hgqsc" path="res://Scenes/Objects/Living Room/living_room_bathroom.tscn" id="4_yugot"]
+[ext_resource type="PackedScene" uid="uid://dihhrkxxyxblj" path="res://Scenes/Objects/Living Room/living_room_ash_tray.tscn" id="5_0re5p"]
+[ext_resource type="PackedScene" uid="uid://m6qwocqcu6ql" path="res://Scenes/Objects/Living Room/living_room_kitchen.tscn" id="5_a8tqs"]
+[ext_resource type="Texture2D" uid="uid://cgwxr8ipywkc3" path="res://Assets/Environment/Living Room/Living Room Object.png" id="6_ax4me"]
+[ext_resource type="PackedScene" uid="uid://d3haes6ljcq5u" path="res://Scenes/Objects/Living Room/dialogue_trigger_livingroom1.tscn" id="12_58kbe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mqnt"]
+size = Vector2(20, 203.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5dnj"]
+size = Vector2(20, 230)
+
+[node name="Scene 2 Living Room" type="Node"]
+
+[node name="Main" type="Node2D" parent="."]
+
+[node name="Timmy" parent="Main" instance=ExtResource("1_l1c47")]
+z_index = 3
+position = Vector2(284, 180)
+
+[node name="Camera2D" type="Camera2D" parent="Main" node_paths=PackedStringArray("player")]
+position = Vector2(284, 148)
+limit_left = -528
+limit_top = 0
+limit_right = 528
+limit_bottom = 296
+editor_draw_limits = true
+script = ExtResource("2_uassv")
+player = NodePath("../Timmy")
+
+[node name="Environment" type="Node" parent="Main"]
+
+[node name="living_room_parent_room" parent="Main/Environment" instance=ExtResource("3_xwcq3")]
+z_index = 4
+position = Vector2(184, 176)
+
+[node name="living_room_bathroom" parent="Main/Environment" instance=ExtResource("4_yugot")]
+z_index = 1
+position = Vector2(-224, 164)
+
+[node name="living_room_kitchen" parent="Main/Environment" instance=ExtResource("5_a8tqs")]
+z_index = 1
+position = Vector2(-104, 164)
+
+[node name="living_room_fam_pic" parent="Main/Environment" instance=ExtResource("3_g6rs8")]
+z_index = 1
+position = Vector2(-344, 117)
+
+[node name="living_room_couch" parent="Main/Environment" instance=ExtResource("4_ncpk5")]
+z_index = 1
+position = Vector2(-322, 204)
+
+[node name="living_room_ash_tray" parent="Main/Environment" instance=ExtResource("5_0re5p")]
+z_index = 2
+position = Vector2(-412, 196)
+
+[node name="lving_room_to_corridor" parent="Main/Environment" instance=ExtResource("4_t2b65")]
+position = Vector2(282, 244)
+
+[node name="Table" type="Sprite2D" parent="Main/Environment"]
+z_index = 1
+position = Vector2(-412, 208)
+texture = ExtResource("6_ax4me")
+hframes = 4
+vframes = 3
+frame = 10
+
+[node name="Livingroom" type="Sprite2D" parent="Main/Environment"]
+position = Vector2(0, 148)
+texture = ExtResource("2_k5xdo")
+
+[node name="Borders" type="StaticBody2D" parent="Main"]
+z_index = 1
+position = Vector2(-64, 12)
+collision_mask = 2
+
+[node name="Left" type="CollisionShape2D" parent="Main/Borders"]
+position = Vector2(-474, 142)
+shape = SubResource("RectangleShape2D_5mqnt")
+
+[node name="Right" type="CollisionShape2D" parent="Main/Borders"]
+position = Vector2(602, 129)
+shape = SubResource("RectangleShape2D_y5dnj")
+
+[node name="dialogue_trigger_bedroom1" parent="." instance=ExtResource("12_58kbe")]
+position = Vector2(10, 226)

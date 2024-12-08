@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5ah8gmekojff"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Parent Room/dialogue_trigger_parent_1.gd" id="1_1pa0y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynwlf"]
+size = Vector2(3, 36)
+
+[node name="dialogue_trigger_kitchen1" type="Area2D" groups=["dialogue trigger"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_1pa0y")
+
+[node name="Cols" type="CollisionShape2D" parent="."]
+z_index = 5
+shape = SubResource("RectangleShape2D_ynwlf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://co0lyt3mqk6fv"]
+
+[ext_resource type="Texture2D" uid="uid://ihg4svplk4tf" path="res://Assets/UI/Choice Textbox.png" id="1_q87nf"]
+
+[resource]
+texture = ExtResource("1_q87nf")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0

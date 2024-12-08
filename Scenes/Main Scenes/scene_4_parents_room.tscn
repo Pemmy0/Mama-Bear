@@ -1,0 +1,148 @@
+[gd_scene load_steps=21 format=3 uid="uid://c3p167x3a5wsp"]
+
+[ext_resource type="Script" path="res://Scripts/Scenes/scene_4_parents_room.gd" id="1_1r4kl"]
+[ext_resource type="PackedScene" uid="uid://bkmgwhxlehwtl" path="res://Scenes/Character/Timmy.tscn" id="1_vtywt"]
+[ext_resource type="Texture2D" uid="uid://bl1x7ohrypnkk" path="res://Assets/Environment/Parents Room/Bedroom mama.png" id="2_aflnr"]
+[ext_resource type="Texture2D" uid="uid://lkndh5ijsd8n" path="res://Assets/Environment/Parents Room/Parents Object.png" id="2_vx7nl"]
+[ext_resource type="PackedScene" uid="uid://c5ah8gmekojff" path="res://Scenes/Objects/Parent Bedroom/dialogue_trigger_parent1.tscn" id="3_e5xvn"]
+[ext_resource type="PackedScene" uid="uid://c8l2xko31b60x" path="res://Scenes/Objects/Parent Bedroom/parent_bedroom_closet.tscn" id="3_q71n3"]
+[ext_resource type="PackedScene" uid="uid://b6yckveonyw2j" path="res://Scenes/Objects/Parent Bedroom/parent_bedroom_cabinet.tscn" id="4_q0m1w"]
+[ext_resource type="PackedScene" uid="uid://cjuh6haqoyr75" path="res://Scenes/Objects/Parent Bedroom/parent_bedroom_papers.tscn" id="9_7yk7f"]
+[ext_resource type="PackedScene" uid="uid://bdwntpwryww2p" path="res://Scenes/Objects/Parent Bedroom/parent_bedroom_door.tscn" id="11_tni6x"]
+[ext_resource type="Texture2D" uid="uid://0oqswk6bsc47" path="res://Assets/Environment/Parents Room/Parents Bedroom.png" id="13_nu8iw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wki27"]
+atlas = ExtResource("2_aflnr")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrgyh"]
+atlas = ExtResource("2_aflnr")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1sib"]
+atlas = ExtResource("2_aflnr")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bixu3"]
+atlas = ExtResource("2_aflnr")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e36y"]
+atlas = ExtResource("2_aflnr")
+region = Rect2(800, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0o2s7"]
+atlas = ExtResource("2_aflnr")
+region = Rect2(1000, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_linh4"]
+atlas = ExtResource("2_aflnr")
+region = Rect2(1200, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sntl3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wki27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrgyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1sib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bixu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e36y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0o2s7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_linh4")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cd0xu"]
+size = Vector2(20, 203.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8ws1"]
+size = Vector2(20, 230)
+
+[node name="scene_3_parents_room" type="Node"]
+script = ExtResource("1_1r4kl")
+
+[node name="Timmy" parent="." instance=ExtResource("1_vtywt")]
+z_index = 3
+position = Vector2(476, 180)
+
+[node name="Marker" type="Node" parent="."]
+
+[node name="MamaMarker" type="Marker2D" parent="Marker"]
+position = Vector2(264, 172)
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="dialogue_trigger_kitchen1" parent="Environment" node_paths=PackedStringArray("player", "marker") instance=ExtResource("3_e5xvn")]
+position = Vector2(75, 226)
+player = NodePath("../../Timmy")
+marker = NodePath("../../Marker/MamaMarker")
+
+[node name="parent_room_closet" parent="Environment" instance=ExtResource("3_q71n3")]
+z_index = 1
+position = Vector2(352, 244)
+
+[node name="parent_room_cabinet" parent="Environment" instance=ExtResource("4_q0m1w")]
+z_index = 1
+position = Vector2(20, 244)
+
+[node name="parent_bedroom_teddy" type="Sprite2D" parent="Environment"]
+z_index = 4
+position = Vector2(292, 208)
+texture = ExtResource("2_vx7nl")
+hframes = 4
+vframes = 3
+frame = 8
+
+[node name="parent_bedroom_suitcase" type="Sprite2D" parent="Environment"]
+z_index = 4
+position = Vector2(292, 208)
+texture = ExtResource("2_vx7nl")
+hframes = 4
+vframes = 3
+frame = 6
+
+[node name="Mama" type="AnimatedSprite2D" parent="Environment"]
+z_index = 1
+position = Vector2(249, 192)
+sprite_frames = SubResource("SpriteFrames_sntl3")
+animation = &"Default"
+offset = Vector2(7, -4)
+
+[node name="parent_bedroom_door" parent="Environment" instance=ExtResource("11_tni6x")]
+position = Vector2(480, 164)
+
+[node name="ParentsBedroom" type="Sprite2D" parent="Environment"]
+position = Vector2(264, 148)
+texture = ExtResource("13_nu8iw")
+
+[node name="parent_room_papers" parent="Environment" instance=ExtResource("9_7yk7f")]
+z_index = 1
+position = Vector2(128, 200)
+
+[node name="Borders" type="StaticBody2D" parent="."]
+position = Vector2(-64, 12)
+collision_mask = 2
+
+[node name="Left" type="CollisionShape2D" parent="Borders"]
+position = Vector2(54, 141.875)
+shape = SubResource("RectangleShape2D_cd0xu")
+
+[node name="Right" type="CollisionShape2D" parent="Borders"]
+position = Vector2(602, 129)
+shape = SubResource("RectangleShape2D_g8ws1")

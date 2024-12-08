@@ -1,0 +1,136 @@
+[gd_scene load_steps=18 format=3 uid="uid://2dwoxotklyte"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Living Room/living_room_tv.gd" id="1_mnl2a"]
+[ext_resource type="Texture2D" uid="uid://3cc4jbalhlt8" path="res://Assets/Environment/Living Room/Living Room Object Dark.png" id="2_3bea1"]
+[ext_resource type="Script" path="res://Singletons/Object Highlight.gd" id="2_ammer"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b56p4"]
+atlas = ExtResource("2_3bea1")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpemw"]
+atlas = ExtResource("2_3bea1")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tkef"]
+atlas = ExtResource("2_3bea1")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yilgl"]
+atlas = ExtResource("2_3bea1")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7cn0"]
+atlas = ExtResource("2_3bea1")
+region = Rect2(800, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh053"]
+atlas = ExtResource("2_3bea1")
+region = Rect2(1000, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7egl"]
+atlas = ExtResource("2_3bea1")
+region = Rect2(0, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw1ta"]
+atlas = ExtResource("2_3bea1")
+region = Rect2(200, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7auoj"]
+atlas = ExtResource("2_3bea1")
+region = Rect2(400, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol3y2"]
+atlas = ExtResource("2_3bea1")
+region = Rect2(600, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64spw"]
+atlas = ExtResource("2_3bea1")
+region = Rect2(800, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_736eb"]
+atlas = ExtResource("2_3bea1")
+region = Rect2(1000, 200, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lptsq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b56p4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpemw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tkef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yilgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7cn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh053")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7egl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw1ta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7auoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ol3y2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64spw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_736eb")
+}],
+"loop": true,
+"name": &"Highlight",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66x1h"]
+size = Vector2(52, 12)
+
+[node name="living_room_TV" type="Area2D" groups=["objects"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_mnl2a")
+
+[node name="Object Highlight" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_ammer")
+
+[node name="Object" type="AnimatedSprite2D" parent="Object Highlight"]
+unique_name_in_owner = true
+position = Vector2(-11, -24)
+sprite_frames = SubResource("SpriteFrames_lptsq")
+animation = &"Default"
+frame_progress = 0.8803
+offset = Vector2(7, -4)
+
+[node name="Cols2" type="CollisionShape2D" parent="Object Highlight"]
+z_index = 5
+position = Vector2(-2, -6)
+shape = SubResource("RectangleShape2D_66x1h")
+
+[node name="Cols" type="CollisionShape2D" parent="."]
+z_index = 5
+position = Vector2(-2, -6)
+shape = SubResource("RectangleShape2D_66x1h")
+
+[connection signal="body_entered" from="Object Highlight" to="Object Highlight" method="_on_body_entered"]
+[connection signal="body_exited" from="Object Highlight" to="Object Highlight" method="_on_body_exited"]

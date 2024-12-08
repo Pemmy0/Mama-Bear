@@ -1,0 +1,162 @@
+[gd_scene load_steps=16 format=3 uid="uid://cunemj3cfcd7t"]
+
+[ext_resource type="PackedScene" uid="uid://bkmgwhxlehwtl" path="res://Scenes/Character/Timmy.tscn" id="1_7udue"]
+[ext_resource type="Script" path="res://Scripts/Scenes/scene_5_1_livingroom.gd" id="1_vw6vc"]
+[ext_resource type="Script" path="res://Scripts/Camera/camera_2d.gd" id="2_rfqbx"]
+[ext_resource type="Texture2D" uid="uid://dxvk2kgb83fh7" path="res://Assets/Lights/light.png" id="3_5xkvm"]
+[ext_resource type="Texture2D" uid="uid://cvclym8hba47" path="res://Assets/Lights/Tv Light.png" id="4_562iv"]
+[ext_resource type="PackedScene" uid="uid://m65vsn0q628b" path="res://Scenes/Objects/Living Room/dialogue_trigger_livingroom2.tscn" id="6_esged"]
+[ext_resource type="PackedScene" uid="uid://q0njs2ve7lf8" path="res://Scenes/Objects/Living Room/living_room_kitchen2.tscn" id="6_xvkaa"]
+[ext_resource type="Script" path="res://Scripts/Objects/Living Room/dialogue_trigger_livingroom_4.gd" id="7_eehoe"]
+[ext_resource type="Script" path="res://Scripts/Objects/Living Room/living_room_dada2.gd" id="11_ur683"]
+[ext_resource type="PackedScene" uid="uid://2dwoxotklyte" path="res://Scenes/Objects/Living Room/living_room_TV.tscn" id="12_sfda0"]
+[ext_resource type="Texture2D" uid="uid://cgwxr8ipywkc3" path="res://Assets/Environment/Living Room/Living Room Object.png" id="14_40vck"]
+[ext_resource type="Texture2D" uid="uid://cft1d3wgqrb3j" path="res://Assets/Environment/Living Room/Livingroom.png" id="15_ggse0"]
+[ext_resource type="PackedScene" uid="uid://dv5bggc1xljjc" path="res://Scenes/Objects/Living Room/living_room_dada.tscn" id="16_dit34"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mqnt"]
+size = Vector2(20, 203.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5dnj"]
+size = Vector2(20, 230)
+
+[node name="Scene 5 Living Room" type="Node"]
+script = ExtResource("1_vw6vc")
+
+[node name="Marker" type="Node" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Marker"]
+position = Vector2(-328, 152)
+
+[node name="Main Environment" type="Node2D" parent="."]
+
+[node name="Timmy" parent="Main Environment" instance=ExtResource("1_7udue")]
+z_index = 3
+position = Vector2(484, 180)
+
+[node name="AnimatedSprite2D" parent="Main Environment/Timmy" index="0"]
+flip_h = true
+
+[node name="Camera2D" type="Camera2D" parent="Main Environment" node_paths=PackedStringArray("player")]
+position = Vector2(284, 148)
+limit_left = -528
+limit_top = 0
+limit_right = 528
+limit_bottom = 296
+editor_draw_limits = true
+script = ExtResource("2_rfqbx")
+player = NodePath("../Timmy")
+
+[node name="Lights" type="Node" parent="Main Environment"]
+
+[node name="PointLight2D" type="PointLight2D" parent="Main Environment/Lights"]
+z_index = 6
+position = Vector2(-458, 164)
+color = Color(0.64, 0.844, 1, 1)
+energy = 0.6
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("3_5xkvm")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Main Environment/Lights"]
+z_index = 6
+position = Vector2(-457, 164)
+color = Color(0.64, 0.844, 1, 1)
+energy = 0.05
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("3_5xkvm")
+texture_scale = 10.0
+
+[node name="PointLight2D4" type="PointLight2D" parent="Main Environment/Lights"]
+z_index = 6
+position = Vector2(-457, 163)
+color = Color(0.64, 0.844, 1, 1)
+energy = 0.05
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("3_5xkvm")
+texture_scale = 10.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Main Environment/Lights"]
+z_index = 6
+position = Vector2(-464, 160)
+color = Color(0.64, 0.844, 1, 1)
+energy = 0.4
+shadow_filter = 1
+texture = ExtResource("4_562iv")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Main Environment/Lights"]
+color = Color(0.2376, 0.2915, 0.33, 1)
+
+[node name="Environment" type="Node" parent="Main Environment"]
+
+[node name="dialogue_trigger_livingroom2" parent="Main Environment/Environment" node_paths=PackedStringArray("marker") instance=ExtResource("6_esged")]
+z_index = 5
+position = Vector2(-426, 225)
+script = ExtResource("7_eehoe")
+marker = NodePath("../../../Marker/Marker2D")
+
+[node name="living_room_kitchen2" parent="Main Environment/Environment" instance=ExtResource("6_xvkaa")]
+position = Vector2(-104, 164)
+
+[node name="living_room_TV" parent="Main Environment/Environment" instance=ExtResource("12_sfda0")]
+z_index = 1
+position = Vector2(-460, 188)
+
+[node name="Parent Door" type="Sprite2D" parent="Main Environment/Environment"]
+z_index = 5
+position = Vector2(184, 184)
+texture = ExtResource("14_40vck")
+hframes = 4
+vframes = 3
+frame = 8
+
+[node name="Table" type="Sprite2D" parent="Main Environment/Environment"]
+z_index = 5
+position = Vector2(-412, 208)
+texture = ExtResource("14_40vck")
+hframes = 4
+vframes = 3
+frame = 10
+
+[node name="Ashtray" type="Sprite2D" parent="Main Environment/Environment"]
+z_index = 5
+position = Vector2(-408, 188)
+texture = ExtResource("14_40vck")
+hframes = 4
+vframes = 3
+
+[node name="Couch" type="Sprite2D" parent="Main Environment/Environment"]
+z_index = 4
+position = Vector2(-320, 196)
+texture = ExtResource("14_40vck")
+hframes = 4
+vframes = 3
+frame = 4
+
+[node name="Livingroom" type="Sprite2D" parent="Main Environment/Environment"]
+position = Vector2(0, 148)
+texture = ExtResource("15_ggse0")
+
+[node name="living_room_dada" parent="Main Environment/Environment" node_paths=PackedStringArray("marker") instance=ExtResource("16_dit34")]
+z_index = 4
+position = Vector2(-334, 164)
+script = ExtResource("11_ur683")
+marker = NodePath("../../../Marker/Marker2D")
+
+[node name="Borders" type="StaticBody2D" parent="Main Environment"]
+z_index = 1
+position = Vector2(-64, 12)
+collision_mask = 2
+
+[node name="Left" type="CollisionShape2D" parent="Main Environment/Borders"]
+position = Vector2(-474, 142)
+shape = SubResource("RectangleShape2D_5mqnt")
+
+[node name="Right" type="CollisionShape2D" parent="Main Environment/Borders"]
+position = Vector2(602, 129)
+shape = SubResource("RectangleShape2D_y5dnj")
+
+[editable path="Main Environment/Timmy"]
+[editable path="Main Environment/Timmy/Choice"]

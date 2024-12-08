@@ -1,0 +1,144 @@
+[gd_scene load_steps=23 format=3 uid="uid://carpssyt4py00"]
+
+[ext_resource type="PackedScene" uid="uid://bkmgwhxlehwtl" path="res://Scenes/Character/Timmy.tscn" id="1_40fg7"]
+[ext_resource type="Script" path="res://Scripts/Scenes/scene_6_kitchen.gd" id="1_iqv1o"]
+[ext_resource type="Texture2D" uid="uid://birx0xj8y0dxi" path="res://Assets/Characters/Smol Pemmy.png" id="2_8jdal"]
+[ext_resource type="Texture2D" uid="uid://cl7cdr6e6ynt0" path="res://Assets/Characters/Dad/Dad Box.png" id="3_7crpg"]
+[ext_resource type="Texture2D" uid="uid://0mo42uvk0y8o" path="res://Assets/Environment/Kitchen/Kitchen Object.png" id="3_eo2wc"]
+[ext_resource type="Texture2D" uid="uid://citl0nnjjcky2" path="res://Assets/Environment/Kitchen/Kitchen Dark.png" id="5_j76xp"]
+[ext_resource type="Texture2D" uid="uid://cag2nbn1rh4ju" path="res://Assets/Environment/Kitchen/Kitchen Glow.png" id="6_yxx34"]
+[ext_resource type="Texture2D" uid="uid://butee2ir4nbr2" path="res://Assets/Environment/Kitchen/Kitchen plain.png" id="8_8ccyd"]
+[ext_resource type="PackedScene" uid="uid://dqgokan14c2t" path="res://Scenes/Objects/Kitchen/kitchen_to_living2.tscn" id="8_hp6bl"]
+[ext_resource type="Script" path="res://Scripts/Objects/Kitchen/kitchen_to_living_3.gd" id="10_rsclw"]
+
+[sub_resource type="Gradient" id="Gradient_xuog8"]
+offsets = PackedFloat32Array(0, 0.107143, 1)
+colors = PackedColorArray(0.04, 0.0273333, 0, 1, 0.108571, 0.0944286, 0.0642857, 1, 1, 0.966667, 0.9, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oayu8"]
+gradient = SubResource("Gradient_xuog8")
+
+[sub_resource type="Environment" id="Environment_bwdkg"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+glow_bloom = 0.1
+fog_light_color = Color(0.698573, 0.506062, 0.30073, 1)
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture2D_oayu8")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai7i3"]
+atlas = ExtResource("3_7crpg")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q73e3"]
+atlas = ExtResource("3_7crpg")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68hlb"]
+atlas = ExtResource("3_7crpg")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vubt5"]
+atlas = ExtResource("3_7crpg")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnk0f"]
+atlas = ExtResource("3_7crpg")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73ajy"]
+atlas = ExtResource("3_7crpg")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hxcu5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai7i3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q73e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68hlb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vubt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnk0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73ajy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_irbla"]
+size = Vector2(20, 203.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ke0fo"]
+size = Vector2(20, 230)
+
+[node name="scene_6_kitchen" type="Node"]
+script = ExtResource("1_iqv1o")
+
+[node name="Timmy" parent="." instance=ExtResource("1_40fg7")]
+z_index = 2
+position = Vector2(276, 180)
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_bwdkg")
+
+[node name="Dad Box" type="AnimatedSprite2D" parent="Environment"]
+z_index = 5
+position = Vector2(332, 192)
+sprite_frames = SubResource("SpriteFrames_hxcu5")
+
+[node name="Table" type="Sprite2D" parent="Environment"]
+z_index = 6
+position = Vector2(348, 200)
+texture = ExtResource("3_eo2wc")
+hframes = 4
+vframes = 3
+frame = 2
+
+[node name="Pemmy" type="Sprite2D" parent="Environment"]
+z_index = 2
+position = Vector2(446, 148)
+texture = ExtResource("2_8jdal")
+
+[node name="KitchenDark" type="Sprite2D" parent="Environment"]
+z_index = 7
+position = Vector2(264, 148)
+texture = ExtResource("5_j76xp")
+
+[node name="KitchenGlow" type="Sprite2D" parent="Environment"]
+z_index = 4
+position = Vector2(264, 148)
+texture = ExtResource("6_yxx34")
+
+[node name="Kitchen" type="Sprite2D" parent="Environment"]
+position = Vector2(264, 148)
+texture = ExtResource("8_8ccyd")
+
+[node name="bathroom_to_living2" parent="Environment" instance=ExtResource("8_hp6bl")]
+position = Vector2(32, 203)
+script = ExtResource("10_rsclw")
+
+[node name="Borders" type="StaticBody2D" parent="."]
+position = Vector2(-64, 12)
+collision_mask = 2
+
+[node name="Left" type="CollisionShape2D" parent="Borders"]
+position = Vector2(54, 141.875)
+shape = SubResource("RectangleShape2D_irbla")
+
+[node name="Right" type="CollisionShape2D" parent="Borders"]
+position = Vector2(602, 129)
+shape = SubResource("RectangleShape2D_ke0fo")

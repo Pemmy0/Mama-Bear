@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://by8r6s8t5hqa3"]
+
+[ext_resource type="Script" path="res://Singletons/Object Highlight.gd" id="1_5v6s5"]
+[ext_resource type="Script" path="res://Scripts/Objects/Bedroom/bedroom_table.gd" id="1_yxnj7"]
+[ext_resource type="Texture2D" uid="uid://dwlp5lcilk3bw" path="res://Assets/Environment/Bedroom/Bedroom Object.png" id="3_iv038"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnfds"]
+atlas = ExtResource("3_iv038")
+region = Rect2(192, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8xil"]
+atlas = ExtResource("3_iv038")
+region = Rect2(384, 384, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lptsq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnfds")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8xil")
+}],
+"loop": true,
+"name": &"Highlight",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66x1h"]
+size = Vector2(88, 32)
+
+[node name="bedroom_table" type="Area2D" groups=["objects"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_yxnj7")
+
+[node name="Object Highlight" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_5v6s5")
+
+[node name="Object" type="AnimatedSprite2D" parent="Object Highlight"]
+unique_name_in_owner = true
+position = Vector2(-3, -44)
+sprite_frames = SubResource("SpriteFrames_lptsq")
+animation = &"Default"
+offset = Vector2(7, -4)
+
+[node name="Cols2" type="CollisionShape2D" parent="Object Highlight"]
+z_index = 5
+position = Vector2(4, 16)
+shape = SubResource("RectangleShape2D_66x1h")
+
+[node name="Cols" type="CollisionShape2D" parent="."]
+z_index = 5
+position = Vector2(4, 16)
+shape = SubResource("RectangleShape2D_66x1h")
+
+[connection signal="body_entered" from="Object Highlight" to="Object Highlight" method="_on_body_entered"]
+[connection signal="body_exited" from="Object Highlight" to="Object Highlight" method="_on_body_exited"]

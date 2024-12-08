@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbmbtnmhtsl8j"]
+
+[ext_resource type="Script" path="res://Scripts/Scenes/scene_5_cutscene.gd" id="1_00imo"]
+[ext_resource type="PackedScene" uid="uid://bkmgwhxlehwtl" path="res://Scenes/Character/Timmy.tscn" id="1_7758w"]
+[ext_resource type="AudioStream" uid="uid://c4ncicl26b1w3" path="res://SFX/Door Open.mp3" id="2_mogid"]
+[ext_resource type="Script" path="res://Scripts/Camera/camera_2d.gd" id="2_seo6b"]
+[ext_resource type="AudioStream" uid="uid://d2ro0a3pwah45" path="res://SFX/Door Close.mp3" id="3_qkym5"]
+[ext_resource type="Texture2D" uid="uid://dxvk2kgb83fh7" path="res://Assets/Lights/light.png" id="3_yexrh"]
+[ext_resource type="Texture2D" uid="uid://cvclym8hba47" path="res://Assets/Lights/Tv Light.png" id="4_50aoi"]
+[ext_resource type="Texture2D" uid="uid://cft1d3wgqrb3j" path="res://Assets/Environment/Living Room/Livingroom.png" id="8_276li"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t2lo0"]
+polygon = PackedVector2Array(528, -15, -202, -15, -202, -5, 528, -5, 528, 85, 536, 85, 536, -15)
+
+[node name="Scene 5 Cutscene" type="Node" node_paths=PackedStringArray("player", "marker")]
+script = ExtResource("1_00imo")
+player = NodePath("Main Environment/Timmy")
+marker = NodePath("Main Environment/Marker2D")
+door_open = ExtResource("2_mogid")
+door_close = ExtResource("3_qkym5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Main Environment" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Main Environment"]
+position = Vector2(528, 144)
+
+[node name="Timmy" parent="Main Environment" instance=ExtResource("1_7758w")]
+z_index = 3
+position = Vector2(484, 180)
+
+[node name="Camera2D" type="Camera2D" parent="Main Environment" node_paths=PackedStringArray("player")]
+position = Vector2(284, 148)
+limit_left = -528
+limit_top = 0
+limit_right = 528
+limit_bottom = 296
+editor_draw_limits = true
+script = ExtResource("2_seo6b")
+player = NodePath("../Timmy")
+
+[node name="Lights" type="Node" parent="Main Environment"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Main Environment/Lights"]
+position = Vector2(0, 15)
+occluder = SubResource("OccluderPolygon2D_t2lo0")
+
+[node name="Outdoor" type="PointLight2D" parent="Main Environment/Lights"]
+z_index = 6
+position = Vector2(873, -38)
+color = Color(1, 0.784, 0.52, 1)
+energy = 1.5
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("3_yexrh")
+texture_scale = 5.0
+
+[node name="PointLight2D" type="PointLight2D" parent="Main Environment/Lights"]
+z_index = 6
+position = Vector2(-458, 164)
+color = Color(0.64, 0.844, 1, 1)
+energy = 0.6
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("3_yexrh")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Main Environment/Lights"]
+z_index = 6
+position = Vector2(-457, 164)
+color = Color(0.64, 0.844, 1, 1)
+energy = 0.05
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("3_yexrh")
+texture_scale = 10.0
+
+[node name="PointLight2D4" type="PointLight2D" parent="Main Environment/Lights"]
+z_index = 6
+position = Vector2(-404, 81)
+color = Color(0.64, 0.844, 1, 1)
+energy = 0.05
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("3_yexrh")
+texture_scale = 10.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Main Environment/Lights"]
+z_index = 6
+position = Vector2(-464, 160)
+color = Color(0.64, 0.844, 1, 1)
+energy = 0.4
+shadow_filter = 1
+texture = ExtResource("4_50aoi")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Main Environment/Lights"]
+color = Color(0.2376, 0.2915, 0.33, 1)
+
+[node name="Environment" type="Node" parent="Main Environment"]
+
+[node name="Livingroom" type="Sprite2D" parent="Main Environment/Environment"]
+position = Vector2(0, 148)
+texture = ExtResource("8_276li")

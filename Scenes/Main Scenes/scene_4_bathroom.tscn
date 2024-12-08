@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://vavf24c8pnxg"]
+
+[ext_resource type="PackedScene" uid="uid://bkmgwhxlehwtl" path="res://Scenes/Character/Timmy.tscn" id="1_ykxa7"]
+[ext_resource type="PackedScene" uid="uid://dx8mi38yeccv8" path="res://Scenes/Objects/Bathroom/dialogue_trigger_bathroom1.tscn" id="2_ea36m"]
+[ext_resource type="PackedScene" uid="uid://bialwlijpsdg0" path="res://Scenes/Objects/Bathroom/bathroom_to_living2.tscn" id="3_6jyr2"]
+[ext_resource type="AudioStream" uid="uid://c4ncicl26b1w3" path="res://SFX/Door Open.mp3" id="4_aj7u4"]
+[ext_resource type="PackedScene" uid="uid://pjaup35rvrtc" path="res://Scenes/Objects/Bathroom/bathroom_toilet_2.tscn" id="4_tq6yn"]
+[ext_resource type="AudioStream" uid="uid://d2ro0a3pwah45" path="res://SFX/Door Close.mp3" id="5_5dj3o"]
+[ext_resource type="PackedScene" uid="uid://c41770cpxm17l" path="res://Scenes/Objects/Bathroom/bathroom_trash_bin_2.tscn" id="5_kbvnh"]
+[ext_resource type="Texture2D" uid="uid://kaxxo047h6d4" path="res://Assets/Environment/Bathroom/Bathroom.png" id="6_r5kgk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcl5t"]
+size = Vector2(20, 203.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6y6ht"]
+size = Vector2(20, 230)
+
+[node name="scene_4_bathroom" type="Node"]
+
+[node name="Timmy" parent="." instance=ExtResource("1_ykxa7")]
+z_index = 5
+position = Vector2(88, 180)
+
+[node name="Marker" type="Node" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Marker"]
+position = Vector2(48, 160)
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="dialogue_trigger_bedroom1" parent="Environment" node_paths=PackedStringArray("marker") instance=ExtResource("2_ea36m")]
+position = Vector2(356, 226)
+marker = NodePath("../../Marker/Marker2D")
+
+[node name="Bathroom" type="Sprite2D" parent="Environment"]
+position = Vector2(264, 148)
+texture = ExtResource("6_r5kgk")
+
+[node name="bathroom_to_living2" parent="Environment" instance=ExtResource("3_6jyr2")]
+position = Vector2(100, 202)
+door_open = ExtResource("4_aj7u4")
+door_close = ExtResource("5_5dj3o")
+
+[node name="bathroom_toilet_2" parent="Environment" instance=ExtResource("4_tq6yn")]
+position = Vector2(278, 244)
+
+[node name="bathroom_trash_bin_2" parent="Environment" instance=ExtResource("5_kbvnh")]
+position = Vector2(244, 244)
+
+[node name="Borders" type="StaticBody2D" parent="."]
+position = Vector2(-64, 12)
+collision_mask = 2
+
+[node name="Left" type="CollisionShape2D" parent="Borders"]
+position = Vector2(122, 141.875)
+shape = SubResource("RectangleShape2D_rcl5t")
+
+[node name="Right" type="CollisionShape2D" parent="Borders"]
+position = Vector2(534, 129)
+shape = SubResource("RectangleShape2D_6y6ht")

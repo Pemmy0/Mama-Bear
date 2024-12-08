@@ -1,0 +1,139 @@
+[gd_scene load_steps=17 format=3 uid="uid://bvbyyfxjirwlg"]
+
+[ext_resource type="PackedScene" uid="uid://bkmgwhxlehwtl" path="res://Scenes/Timmy.tscn" id="1_ssyak"]
+[ext_resource type="Texture2D" uid="uid://ix22dy5676dm" path="res://Assets/Environment/Bedroom/Shadow.png" id="2_6wr6l"]
+[ext_resource type="Texture2D" uid="uid://dkgblim8kvnto" path="res://Assets/Environment/Bedroom/Glow.png" id="3_vd2eo"]
+[ext_resource type="PackedScene" uid="uid://djo64afg0ldtf" path="res://Scenes/Objects/Bedroom/bedroom_bed.tscn" id="5_iy6u7"]
+[ext_resource type="Texture2D" uid="uid://dwlp5lcilk3bw" path="res://Assets/Environment/Bedroom/Bedroom Object.png" id="6_bhf7o"]
+[ext_resource type="PackedScene" uid="uid://cjf5h5ho3in41" path="res://Scenes/Objects/Bedroom/bedroom_door.tscn" id="7_khemj"]
+[ext_resource type="PackedScene" uid="uid://by8r6s8t5hqa3" path="res://Scenes/Objects/Bedroom/bedroom_table.tscn" id="8_l2wyc"]
+[ext_resource type="PackedScene" uid="uid://dw8gk3wdhmxxy" path="res://Scenes/Objects/Bedroom/bedroom_closet.tscn" id="9_3e1sx"]
+[ext_resource type="Texture2D" uid="uid://c8pqkuxxn5ncc" path="res://Assets/Environment/Bedroom/Wall n Border.png" id="10_vnhxs"]
+[ext_resource type="PackedScene" uid="uid://bl12uaek8ng6c" path="res://Scenes/Objects/Bedroom/dialogue_trigger_bedroom1.tscn" id="11_2twc5"]
+[ext_resource type="Texture2D" uid="uid://bin4p7nhimsob" path="res://Assets/Environment/Bedroom/Bedroom.png" id="11_slsvx"]
+
+[sub_resource type="Gradient" id="Gradient_8u1wq"]
+offsets = PackedFloat32Array(0, 0.107143, 1)
+colors = PackedColorArray(0.04, 0.0273333, 0, 1, 0.108571, 0.0944286, 0.0642857, 1, 1, 0.966667, 0.9, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3d6qd"]
+gradient = SubResource("Gradient_8u1wq")
+
+[sub_resource type="Environment" id="Environment_l4boj"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+glow_bloom = 0.1
+fog_light_color = Color(0.698573, 0.506062, 0.30073, 1)
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture2D_3d6qd")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_to4hr"]
+size = Vector2(20, 203.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ql7ht"]
+size = Vector2(20, 230)
+
+[node name="Scene 1 Bedroom" type="Node"]
+metadata/_edit_vertical_guides_ = [-45.0]
+
+[node name="Timmy" parent="." instance=ExtResource("1_ssyak")]
+z_index = 3
+position = Vector2(192, 180)
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_l4boj")
+
+[node name="Shadow" type="Sprite2D" parent="Environment"]
+z_index = 5
+position = Vector2(264, 148)
+texture = ExtResource("2_6wr6l")
+
+[node name="Glow" type="Sprite2D" parent="Environment"]
+z_index = 5
+position = Vector2(264, 148)
+texture = ExtResource("3_vd2eo")
+
+[node name="Lizard" type="Sprite2D" parent="Environment"]
+z_index = 3
+y_sort_enabled = true
+position = Vector2(36, 168)
+texture = ExtResource("6_bhf7o")
+hframes = 5
+vframes = 5
+frame = 3
+
+[node name="BedroomBed" parent="Environment" instance=ExtResource("5_iy6u7")]
+z_index = 3
+position = Vector2(73, 220)
+
+[node name="Chair" type="Sprite2D" parent="Environment"]
+z_index = 4
+y_sort_enabled = true
+position = Vector2(224, 164)
+texture = ExtResource("6_bhf7o")
+hframes = 5
+vframes = 5
+frame = 9
+
+[node name="Book" type="Sprite2D" parent="Environment"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(224, 164)
+texture = ExtResource("6_bhf7o")
+hframes = 5
+vframes = 5
+frame = 14
+
+[node name="dialogue_trigger_bedroom1" parent="Environment" instance=ExtResource("11_2twc5")]
+position = Vector2(417, 226)
+
+[node name="bedroom_door" parent="Environment" instance=ExtResource("7_khemj")]
+z_index = 5
+position = Vector2(480, 176)
+
+[node name="bedroom_table" parent="Environment" instance=ExtResource("8_l2wyc")]
+z_index = 1
+position = Vector2(220, 212)
+
+[node name="bedroom_closet" parent="Environment" instance=ExtResource("9_3e1sx")]
+z_index = 1
+position = Vector2(352, 212)
+
+[node name="Flower" type="Sprite2D" parent="Environment"]
+z_index = 2
+position = Vector2(260, 168)
+texture = ExtResource("6_bhf7o")
+hframes = 5
+vframes = 5
+frame = 22
+
+[node name="Window" type="Sprite2D" parent="Environment"]
+z_index = 1
+position = Vector2(232, 108)
+texture = ExtResource("6_bhf7o")
+hframes = 5
+vframes = 5
+frame = 19
+
+[node name="BG Wall n Border" type="Sprite2D" parent="Environment"]
+position = Vector2(264, 148)
+texture = ExtResource("10_vnhxs")
+
+[node name="Bedroom" type="Sprite2D" parent="Environment"]
+visible = false
+position = Vector2(264, 148)
+texture = ExtResource("11_slsvx")
+
+[node name="Borders" type="StaticBody2D" parent="."]
+collision_mask = 2
+
+[node name="Left" type="CollisionShape2D" parent="Borders"]
+position = Vector2(54, 141.875)
+shape = SubResource("RectangleShape2D_to4hr")
+
+[node name="Right" type="CollisionShape2D" parent="Borders"]
+position = Vector2(538, 151)
+shape = SubResource("RectangleShape2D_ql7ht")
