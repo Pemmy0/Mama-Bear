@@ -48,7 +48,6 @@ func _on_body_entered(body):
 	if MonologueManager.dialog_ended:
 		return
 	DialogueManager.start_dialog(msg)
-	ObjectLibrary.has_interacted_livingroom_2 = true
 		
 func _on_body_exited(_body):
 	current_index = 0

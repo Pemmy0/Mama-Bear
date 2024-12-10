@@ -3,10 +3,9 @@ extends Node
 @onready var dada = $"Main Environment/Dada"
 
 @export var mama_marker: Marker2D
-@export var dada_marker: Marker2D
 @export var bean_marker: Marker2D
 
-var test = ObjectLibrary.final_fight_3
+var test = ObjectLibrary.final_fight_5
 
 var key_holder = []
 var value_holder = []
@@ -22,6 +21,7 @@ var has_interacted = false
 var play_dialogue = true
 
 func _ready():
+	ObjectLibrary.mama_move_allowed = false
 	DialogueManager.text_box_scene = preload("res://Scenes/UI/text_box_right.tscn")
 	DialogueManager.dialog_ended = false
 	assign_new_line()
@@ -37,12 +37,8 @@ func _process(delta):
 		Input.is_action_just_pressed("Interact") &&
 		!DialogueManager.is_dialog_active && DialogueManager.dialog_ended
 	):
-		if test == ObjectLibrary.final_fight_3:
-			DialogueManager.dialog_ended = false
+		if test == ObjectLibrary.final_fight_5:
 			ObjectLibrary.mama_move_allowed = true
-			ObjectLibrary.mama_walk_anim = true
-			play_dialogue = false
-			print("Dialogue has ended")
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Interact") && play_dialogue:
@@ -62,7 +58,7 @@ func go_to_next():
 		if "Mama" in key:
 			DialogueManager.text_box_position = mama_marker.global_position
 		elif "Dada" in key:
-			DialogueManager.text_box_position = dada_marker.global_position
+			DialogueManager.text_box_position = Vector2.ZERO
 		else:
 			DialogueManager.text_box_position = bean_marker.global_position
 
