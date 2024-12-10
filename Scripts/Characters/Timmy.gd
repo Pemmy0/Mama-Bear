@@ -89,7 +89,27 @@ func movement(direction):
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
+
+## (tankpillow)
+# This function is trying it's best. However, it's like a high school play where
+# the actors lines are out of sync and the stage directions were written 2 mintues
+# before the show. 
+# 1. Nested `if` Explosion:
+#    This function has if-else statements buried so far you might as well need
+#    a treasure map to locate them. It's hard to follow and bloated.
+# 2. Awkward Direction Handling:
+#    The `direction` toggling logic is straight forwards, but redudant. Since
+#    `direction` can only be -1, 0, 1, why not simplify.
+#func update_animation(direction):
+	#if not move_allowed:
+		#animated_sprite_2d.play(animation_idle)
+		#return
+	#
+	#if direction != 0:
+		#animated_sprite_2d.play(animation_walk)
+		#animated_sprite_2d.flip_h = direction == -1
+	#elif velocity.x == 0:
+		#animated_sprite_2d.play(animation_idle)
 func update_animation(direction):
 	if move_allowed:
 		if direction != 0: 
@@ -150,6 +170,11 @@ func load_sfx(sfx_to_load):
 		audio_stream_player.stop()
 		audio_stream_player.stream = sfx_to_load
 
+## (tankpillow)
+# Your function naming is so bad that you needed a comment to figure out 
+# what a function does. That's like naming your child 'child1' and putting a 
+# sticky note on the child's head saying 'Timmy.' Just name the child 'timmy'
+
 #choice 1
 func _on_button_1_pressed():
 	choice_one_choosen = true
@@ -161,7 +186,7 @@ func _on_button_1_pressed():
 		DialogueManager.start_dialog(temp_choice_lines1)
 	MonologueManager.choice_start = false
 	interactable = false
-		
+
 #choice 2
 func _on_button_2_pressed():
 	MonologueManager.start_dialog(global_position, temp_choice_lines2, speech_sound)
