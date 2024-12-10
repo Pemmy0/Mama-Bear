@@ -48,6 +48,27 @@ func _physics_process(_delta):
 	
 	start_choice()
 	
+	## (tankpillow) 
+	# Your if statement is crying for help—it’s like a tangled set of Christmas 
+	# lights that somehow short-circuited and lit up "Timmy’s Confused State." 
+	# Here's why it needs some TLC:
+	#  1. Excessive Conductions: 
+	#     You’ve got more "or" conditions here than a college application 
+	#     essay—each one screaming, "Pick me!" It feels like you're trying to 
+	#     win a Boolean Olympics without clear intent.
+	# 2. Explicit Booleans for No Reason:
+	#    Writing `move_allowed = false` in the `if` and `move_allowed = true` in 
+	#    `else` is like putting training wheels on a rocket ship.
+	#    A simple `moved_allowed` = !(...)` would do.
+	# 3. Over-Indented Parentheses:
+	#    The parentheses formatting screams, "I'm trying too hard to look neat, 
+	#    but it's backfiring!" It's neither readable nor compact-it's just awkward.
+	#
+	# Here is a refined version to save Timmy and our sanity:
+	#move_allowed = !(MonologueManager.is_dialog_active || \
+					#MonologueManager.choice_start || \
+					#DialogueManager.is_dialog_active || \
+					#!ObjectLibrary.timmy_move_allowed)
 	if ( 
 		MonologueManager.is_dialog_active || MonologueManager.choice_start ||
 		DialogueManager.is_dialog_active || !ObjectLibrary.timmy_move_allowed
