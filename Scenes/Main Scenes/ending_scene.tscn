@@ -3,6 +3,34 @@
 [ext_resource type="Script" path="res://Scripts/Scenes/ending_scene.gd" id="1_0v5rv"]
 [ext_resource type="FontFile" uid="uid://rkgcui5bcph0" path="res://Assets/Fonts/dogicapixelbold.ttf" id="2_jf4w0"]
 
+[sub_resource type="Animation" id="Animation_jggtj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Thank You for
+playing"]
+}
+
 [sub_resource type="Animation" id="Animation_sccr4"]
 resource_name = "ending_animation"
 length = 6.0
@@ -31,34 +59,6 @@ tracks/1/keys = {
 "values": ["Thank You for
 playing", "Thank You for
 playing", "You can close the game now"]
-}
-
-[sub_resource type="Animation" id="Animation_jggtj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:theme_override_colors/font_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Label:text")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["Thank You for
-playing"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w3q5s"]
