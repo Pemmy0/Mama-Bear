@@ -64,7 +64,7 @@ func _physics_process(_delta):
 	#    The parentheses formatting screams, "I'm trying too hard to look neat, 
 	#    but it's backfiring!" It's neither readable nor compact-it's just awkward.
 	#
-	# Here is a refined version to save Timmy and our sanity:
+	## Here is a refined version to save Timmy and our sanity:
 	#move_allowed = !(MonologueManager.is_dialog_active || \
 					#MonologueManager.choice_start || \
 					#DialogueManager.is_dialog_active || \
@@ -103,13 +103,32 @@ func update_animation(direction):
 			animated_sprite_2d.flip_h = true
 	else:
 		animated_sprite_2d.play(animation_idle)
-		
+
+## (tankpillow)
+# This function is like the coding equivalent of making a sandwhich by opening
+# and closing the fridge every time you need a single ingredient.  Let’s dive 
+# into why it’s unnecessarily convoluted:
+# 1. Boolean Assignment Overkill
+#    You're toggling a boolean property (`disabled`) with a whole if-else block.
+#    thats like using a chainsaw to slice a loaf of bread-effective, but way
+#    more than you need.
+# 2. Hardcoding the Input action:
+#    Why not make the "Interact a constant. If you decide to change the action
+#    input name you need to change every instance of it. Good luck finding every
+#    instance.
+# 3. Readingable, but inefficent.
+#    The function is readable, fine... but it's also the kind of code that makes 
+#    experianced developers roll their eyes and reach for the refactor button. kek.
+#
+## Here's a leaner, cleaner version:
+#func interact():
+#	%InteractBox.disabled = !(Input.is_action_just_pressed("Interact"))
 func interact():
 	if Input.is_action_just_pressed("Interact"):
 		%InteractBox.disabled = false
 	else:
 		%InteractBox.disabled = true
-		
+
 func start_choice():
 	if MonologueManager.choice_start:
 		choice.show()
