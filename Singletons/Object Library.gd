@@ -351,3 +351,7 @@ var final_fight_5 = {
 	"Mama5": "No.",
 	"Mama6": "He wont be coming with us"
 }
+var ending: Array[String] = [
+	"Mama said we are going on a vacation", "But it has been so long", 
+	"I miss the yellow house. . .", "And I miss dad."
+]

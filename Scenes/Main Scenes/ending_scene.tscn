@@ -1,9 +1,109 @@
-[gd_scene format=3 uid="uid://d143w38bh5tkv"]
+[gd_scene load_steps=6 format=3 uid="uid://b7wrijwbdmjuq"]
 
-[node name="Ending Scene" type="Node2D"]
+[ext_resource type="Script" path="res://Scripts/Scenes/ending_scene.gd" id="1_0v5rv"]
+[ext_resource type="FontFile" uid="uid://rkgcui5bcph0" path="res://Assets/Fonts/dogicapixelbold.ttf" id="2_jf4w0"]
+
+[sub_resource type="Animation" id="Animation_sccr4"]
+resource_name = "ending_animation"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2.5, 3.5, 4, 4.23333, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.03333, 4.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["Thank You for
+playing", "Thank You for
+playing", "You can close the game now"]
+}
+
+[sub_resource type="Animation" id="Animation_jggtj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Thank You for
+playing"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w3q5s"]
+_data = {
+"RESET": SubResource("Animation_jggtj"),
+"ending_animation": SubResource("Animation_sccr4")
+}
+
+[node name="Ending Scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0v5rv")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(13.2, 7.4)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(257, 140)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_jf4w0")
+theme_override_font_sizes/font_size = 8
+text = "Thank You for
+playing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w3q5s")
+}
