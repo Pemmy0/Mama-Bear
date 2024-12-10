@@ -235,7 +235,9 @@ func _on_interact_area_entered(area):
 
 
 func _on_animated_sprite_2d_frame_changed():
+	## (tankpillow) Woah... you actually did something somewhat intelligent. 
 	if animated_sprite_2d.animation == "Idle" || animated_sprite_2d.animation == "Idle Box":
 		return
 	load_sfx(sfx_footstep)
+	## (tankpillow) Wow! simplifying if statements, it's a miracle. 
 	if animated_sprite_2d.frame in footstep_frames: audio_stream_player.play()
