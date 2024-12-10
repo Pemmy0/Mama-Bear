@@ -242,7 +242,6 @@ z_index = 3
 position = Vector2(472, 176)
 script = ExtResource("5_opsvg")
 direction = 1.0
-walk_time = 12.0
 
 [node name="AnimatedSprite2D" parent="Main Environment/Environment/Mama" index="0"]
 position = Vector2(-5, 0)
@@ -337,7 +336,7 @@ position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_vg6y8")
 
 [node name="Tigger 2" type="Area2D" parent="Trigger"]
-position = Vector2(990, 234)
+position = Vector2(948, 234)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("10_unapl")

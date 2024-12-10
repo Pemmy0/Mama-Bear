@@ -342,13 +342,12 @@ var final_fight_4 = {
 	"Mama3": "You are sick",
 	"Mama4": "lets go now honey"
 }
-var dialogue_trigger_lastscene_1 = {
+#Scene 7 Last Dialogue
+var final_fight_5 = {
 	"Timmy1": "Mama, are we going on that vacation?",
 	"Mama2": "Yes honey. . .",
-	"Mama3": "We are."
-}
-var dialogue_trigger_lastscene_2 = {
-	"Timmy1": "Is dad coming?",
-	"Mama2": "No.",
-	"Mama3": "He won’t be coming with us",
+	"Mama3": "We are.",
+	"Timmy4": "Is dad coming?",
+	"Mama5": "No.",
+	"Mama6": "He wont be coming with us"
 }
