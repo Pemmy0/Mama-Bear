@@ -1,15 +1,17 @@
 [gd_scene load_steps=32 format=3 uid="uid://s8g02n2f2rvg"]
 
-[ext_resource type="Script" path="res://Scripts/Scenes/scene_6_4_livingroom.gd" id="1_j2fhm"]
+[ext_resource type="Script" path="res://Scripts/Scenes/scene_7_livingroom.gd" id="1_pjwb5"]
 [ext_resource type="Texture2D" uid="uid://dxvk2kgb83fh7" path="res://Assets/Lights/light.png" id="2_mpqyd"]
+[ext_resource type="Script" path="res://Scripts/Characters/mama_7.gd" id="2_oqpb1"]
 [ext_resource type="Texture2D" uid="uid://cvclym8hba47" path="res://Assets/Lights/Tv Light.png" id="3_nrqw0"]
 [ext_resource type="PackedScene" uid="uid://demx75j2c5rs1" path="res://Scenes/Character/mama.tscn" id="4_7ga2a"]
-[ext_resource type="Script" path="res://Scripts/Characters/mama_6_4.gd" id="5_vrqdv"]
 [ext_resource type="Texture2D" uid="uid://3cc4jbalhlt8" path="res://Assets/Environment/Living Room/Living Room Object Dark.png" id="6_ch3fd"]
 [ext_resource type="Texture2D" uid="uid://cgwxr8ipywkc3" path="res://Assets/Environment/Living Room/Living Room Object.png" id="7_nusy3"]
 [ext_resource type="Texture2D" uid="uid://cft1d3wgqrb3j" path="res://Assets/Environment/Living Room/Livingroom.png" id="8_yx5jg"]
-[ext_resource type="Script" path="res://Scripts/Last Scene Trigger/tigger_3.gd" id="9_vgm20"]
-[ext_resource type="Script" path="res://Scripts/Last Scene Trigger/tigger_4.gd" id="10_psln3"]
+[ext_resource type="Script" path="res://Scripts/Last Scene Trigger/tigger_5.gd" id="9_8i8u6"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_k4gy1"]
+polygon = PackedVector2Array(528, -15, -202, -15, -202, -5, 528, -5, 528, 85, 536, 85, 536, -15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6vxtl"]
 atlas = ExtResource("6_ch3fd")
@@ -159,35 +161,38 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5mqnt"]
 size = Vector2(20, 203.75)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vg6y8"]
-size = Vector2(2, 44)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0ro3"]
 
-[node name="Scene 6_3 Living Room" type="Node" node_paths=PackedStringArray("mama_marker", "dada_marker", "bean_marker")]
-script = ExtResource("1_j2fhm")
-mama_marker = NodePath("Main Environment/Environment/Mama/Mama Marker")
-dada_marker = NodePath("Marker/Dada Marker")
+[node name="Scene 7 Living Room" type="Node" node_paths=PackedStringArray("mama_marker", "bean_marker")]
+script = ExtResource("1_pjwb5")
+mama_marker = NodePath("Marker/Mama Marker")
 bean_marker = NodePath("Marker/Bean Marker")
-
-[node name="Animated Cam" type="Node" parent="."]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Animated Cam"]
 
 [node name="Marker" type="Node" parent="."]
 
-[node name="Dada Marker" type="Marker2D" parent="Marker"]
-position = Vector2(204, 148)
+[node name="Mama Marker" type="Marker2D" parent="Marker"]
+position = Vector2(1004, 128)
 
 [node name="Bean Marker" type="Marker2D" parent="Marker"]
-position = Vector2(483, 180)
-
-[node name="Dada Marker 2" type="Marker2D" parent="Marker"]
-position = Vector2(324, 148)
-
-[node name="Mama Marker2" type="Marker2D" parent="Marker"]
-position = Vector2(812, 124)
+position = Vector2(964, 181)
 
 [node name="Main Environment" type="Node2D" parent="."]
 position = Vector2(528, 0)
+
+[node name="Camera2D" type="Camera2D" parent="Main Environment"]
+position = Vector2(264, 148)
+
+[node name="Mama" parent="Main Environment" instance=ExtResource("4_7ga2a")]
+z_index = 3
+position = Vector2(465, 176)
+script = ExtResource("2_oqpb1")
+direction = 1.0
+
+[node name="AnimatedSprite2D" parent="Main Environment/Mama" index="0"]
+position = Vector2(-5, 0)
+
+[node name="Mama Marker" type="Marker2D" parent="Main Environment/Mama"]
+position = Vector2(-9, -52)
 
 [node name="Lights" type="Node" parent="Main Environment"]
 
@@ -232,28 +237,21 @@ texture = ExtResource("3_nrqw0")
 position = Vector2(528, 0)
 color = Color(0.2376, 0.2915, 0.33, 1)
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Main Environment/Lights"]
+position = Vector2(528, 15)
+occluder = SubResource("OccluderPolygon2D_k4gy1")
+
+[node name="Outdoor" type="PointLight2D" parent="Main Environment/Lights"]
+z_index = 6
+position = Vector2(1401, -38)
+color = Color(1, 0.784, 0.52, 1)
+energy = 1.5
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("2_mpqyd")
+texture_scale = 5.0
+
 [node name="Environment" type="Node" parent="Main Environment"]
-
-[node name="Mama" parent="Main Environment/Environment" instance=ExtResource("4_7ga2a")]
-z_index = 3
-position = Vector2(472, 176)
-script = ExtResource("5_vrqdv")
-direction = 1.0
-walk_time = 12.0
-
-[node name="AnimatedSprite2D" parent="Main Environment/Environment/Mama" index="0"]
-position = Vector2(-5, 0)
-
-[node name="Camera2D" type="Camera2D" parent="Main Environment/Environment/Mama"]
-position = Vector2(-208, -28)
-limit_left = 0
-limit_top = 0
-limit_right = 1056
-limit_bottom = 0
-editor_draw_limits = true
-
-[node name="Mama Marker" type="Marker2D" parent="Main Environment/Environment/Mama"]
-position = Vector2(-9, -52)
 
 [node name="Dada" type="AnimatedSprite2D" parent="Main Environment/Environment"]
 unique_name_in_owner = true
@@ -317,31 +315,15 @@ shape = SubResource("RectangleShape2D_5mqnt")
 
 [node name="Trigger" type="Node" parent="."]
 
-[node name="Tigger 1" type="Area2D" parent="Trigger" node_paths=PackedStringArray("marker_mama", "marker_dada")]
-position = Vector2(807, 234)
+[node name="Area2D" type="Area2D" parent="Trigger"]
+position = Vector2(1159, 233)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("9_vgm20")
-marker_mama = NodePath("../../Marker/Mama Marker2")
-marker_dada = NodePath("../../Marker/Dada Marker 2")
+script = ExtResource("9_8i8u6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger/Tigger 1"]
-position = Vector2(0, -12)
-shape = SubResource("RectangleShape2D_vg6y8")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger/Area2D"]
+shape = SubResource("RectangleShape2D_g0ro3")
 
-[node name="Tigger 2" type="Area2D" parent="Trigger"]
-position = Vector2(990, 234)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("10_psln3")
+[connection signal="body_entered" from="Trigger/Area2D" to="Trigger/Area2D" method="_on_body_entered"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger/Tigger 2"]
-position = Vector2(0, -12)
-shape = SubResource("RectangleShape2D_vg6y8")
-
-[connection signal="body_entered" from="Trigger/Tigger 1" to="Trigger/Tigger 1" method="_on_body_entered"]
-[connection signal="body_exited" from="Trigger/Tigger 1" to="Trigger/Tigger 1" method="_on_body_exited"]
-[connection signal="body_entered" from="Trigger/Tigger 2" to="Trigger/Tigger 2" method="_on_body_entered"]
-[connection signal="body_exited" from="Trigger/Tigger 2" to="Trigger/Tigger 2" method="_on_body_exited"]
-
-[editable path="Main Environment/Environment/Mama"]
+[editable path="Main Environment/Mama"]

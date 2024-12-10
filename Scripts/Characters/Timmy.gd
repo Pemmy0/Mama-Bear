@@ -48,13 +48,8 @@ func _physics_process(_delta):
 	
 	start_choice()
 	
-	if ( 
-		MonologueManager.is_dialog_active || MonologueManager.choice_start ||
-		DialogueManager.is_dialog_active || !ObjectLibrary.timmy_move_allowed
-	):
-		move_allowed = false
-	else:
-		move_allowed = true
+	move_allowed = !(MonologueManager.is_dialog_active || MonologueManager.choice_start || 
+		DialogueManager.is_dialog_active || !ObjectLibrary.timmy_move_allowed)
 		
 	if !ObjectLibrary.timmy_box:
 		animation_idle = "Idle"
@@ -84,10 +79,7 @@ func update_animation(direction):
 		animated_sprite_2d.play(animation_idle)
 		
 func interact():
-	if Input.is_action_just_pressed("Interact"):
-		%InteractBox.disabled = false
-	else:
-		%InteractBox.disabled = true
+	%InteractBox.disabled = !(Input.is_action_just_pressed("Interact"))
 		
 func start_choice():
 	if MonologueManager.choice_start:
@@ -114,10 +106,8 @@ func load_sfx(sfx_to_load):
 func _on_button_1_pressed():
 	choice_one_choosen = true
 	if !ObjectLibrary.use_them_dialogue:
-		print("mono")
 		MonologueManager.start_dialog(global_position, temp_choice_lines1, speech_sound)
 	else:
-		print("dia")
 		DialogueManager.start_dialog(temp_choice_lines1)
 	MonologueManager.choice_start = false
 	interactable = false
