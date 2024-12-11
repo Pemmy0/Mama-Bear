@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Timmy
 
-@export var SPEED = 75.0 + 300 
+@export var SPEED = 75.0
 @export var sfx_footstep: AudioStream
 @export var sfx_interact: AudioStream
 
