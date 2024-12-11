@@ -163,7 +163,7 @@ size = Vector2(20, 203.75)
 size = Vector2(20, 230)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vg6y8"]
-size = Vector2(2, 44)
+size = Vector2(6, 44)
 
 [node name="Scene 6_3 Living Room" type="Node" node_paths=PackedStringArray("mama_marker", "dada_marker", "bean_marker")]
 script = ExtResource("1_bbucf")
@@ -332,7 +332,7 @@ marker_mama = NodePath("../../Marker/Mama Marker2")
 marker_dada = NodePath("../../Marker/Dada Marker 2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger/Tigger 1"]
-position = Vector2(0, -12)
+position = Vector2(2, -12)
 shape = SubResource("RectangleShape2D_vg6y8")
 
 [node name="Tigger 2" type="Area2D" parent="Trigger"]
