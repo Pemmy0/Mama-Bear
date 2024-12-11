@@ -22,6 +22,7 @@ var has_interacted = false
 var play_dialogue = true
 
 func _ready():
+	GlobalPosition.current_room = "livingroom2"
 	DialogueManager.text_box_scene = preload("res://Scenes/UI/text_box_right.tscn")
 	DialogueManager.dialog_ended = false
 	DialogueManager.can_advance_line = false

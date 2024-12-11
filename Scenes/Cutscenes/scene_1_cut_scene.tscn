@@ -1,10 +1,13 @@
-[gd_scene load_steps=85 format=3 uid="uid://bm5tugqlakpq0"]
+[gd_scene load_steps=88 format=3 uid="uid://bm5tugqlakpq0"]
 
 [ext_resource type="Script" path="res://Scripts/Scenes/scene_1_cut_scene.gd" id="1_261dg"]
 [ext_resource type="Texture2D" uid="uid://6bfkplgca3dq" path="res://Assets/Cutscenes/Scene 1 ( Waking Up )-Sheet.png" id="1_qtf0i"]
 [ext_resource type="AudioStream" uid="uid://bhysxj3cm4aqu" path="res://SFX/Footstep wood.mp3" id="2_3s3jj"]
+[ext_resource type="AudioStream" uid="uid://bjoerhobif3mt" path="res://SFX/Sheet Rustling.mp3" id="3_lspp8"]
 [ext_resource type="Texture2D" uid="uid://bxqf5dqewggm8" path="res://Assets/Cutscenes/Scene 1 ( Sleepin )-Sheet.png" id="3_tfpfy"]
+[ext_resource type="AudioStream" uid="uid://4melhxa5ko6d" path="res://SFX/Scratch.mp3" id="4_gr1nf"]
 [ext_resource type="FontFile" uid="uid://rkgcui5bcph0" path="res://Assets/Fonts/dogicapixelbold.ttf" id="5_oa0l7"]
+[ext_resource type="AudioStream" uid="uid://brs2auob5okex" path="res://SFX/Waking up.mp3" id="5_tpufd"]
 
 [sub_resource type="Gradient" id="Gradient_7sevb"]
 offsets = PackedFloat32Array(0, 0.107143, 1)
@@ -548,6 +551,21 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="Animation" id="Animation_7e5c5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_5eegs"]
 resource_name = "start animation"
 length = 2.0
@@ -564,21 +582,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_7e5c5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/Label:theme_override_colors/font_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3cdkd"]
 _data = {
 "RESET": SubResource("Animation_7e5c5"),
@@ -589,6 +592,9 @@ _data = {
 position = Vector2(264, 148)
 script = ExtResource("1_261dg")
 sfx_footstep = ExtResource("2_3s3jj")
+sheet_rustling = ExtResource("3_lspp8")
+sfx_scratch = ExtResource("4_gr1nf")
+sfx_hat = ExtResource("5_tpufd")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_un60m")

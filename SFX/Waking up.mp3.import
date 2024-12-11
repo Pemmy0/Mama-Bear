@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://brs2auob5okex"
+path="res://.godot/imported/Waking up.mp3-aa397f71a98df0fbf96278015e6d1c70.mp3str"
+
+[deps]
+
+source_file="res://SFX/Waking up.mp3"
+dest_files=["res://.godot/imported/Waking up.mp3-aa397f71a98df0fbf96278015e6d1c70.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

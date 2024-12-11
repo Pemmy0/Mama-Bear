@@ -10,6 +10,8 @@ var event_trigger_timer = 2
 var lines = ObjectLibrary.trigger_livingroom_3
 
 func _ready():
+	GlobalPosition.current_room = "livingroom2"
+	RoomAmbience.play_room_ambience()
 	event_trigger_timer = 2
 	ObjectLibrary.timmy_move_allowed = false
 		

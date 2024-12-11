@@ -29,6 +29,8 @@ var timmy_box = false
 var call_final_2 = false
 var call_final_3 = false
 
+var has_played_ambience = false
+
 #Bedroom
 var bedroom_bed: Array[String] = [
 	"The bed looks comfy", ". . . hm?", "Teddy is missing!!", "Is mama washing Teddy again?",

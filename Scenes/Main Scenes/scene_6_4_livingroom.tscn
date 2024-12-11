@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://f1rik2oe4gps"]
+[gd_scene load_steps=34 format=3 uid="uid://f1rik2oe4gps"]
 
 [ext_resource type="Script" path="res://Scripts/Scenes/scene_6_4_livingroom.gd" id="1_bbucf"]
 [ext_resource type="Texture2D" uid="uid://dxvk2kgb83fh7" path="res://Assets/Lights/light.png" id="2_6wrrw"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cft1d3wgqrb3j" path="res://Assets/Environment/Living Room/Livingroom.png" id="9_36vm2"]
 [ext_resource type="Script" path="res://Scripts/Last Scene Trigger/tigger_3.gd" id="9_yy0h8"]
 [ext_resource type="Script" path="res://Scripts/Last Scene Trigger/tigger_4.gd" id="10_unapl"]
+[ext_resource type="AudioStream" uid="uid://c4ncicl26b1w3" path="res://SFX/Door Open.mp3" id="11_gw4by"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6vxtl"]
 atlas = ExtResource("7_o5ygc")
@@ -165,7 +166,7 @@ size = Vector2(20, 230)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vg6y8"]
 size = Vector2(6, 44)
 
-[node name="Scene 6_3 Living Room" type="Node" node_paths=PackedStringArray("mama_marker", "dada_marker", "bean_marker")]
+[node name="Scene 6_4 Living Room" type="Node" node_paths=PackedStringArray("mama_marker", "dada_marker", "bean_marker")]
 script = ExtResource("1_bbucf")
 mama_marker = NodePath("Main Environment/Environment/Mama/Mama Marker")
 dada_marker = NodePath("Marker/Dada Marker")
@@ -344,6 +345,9 @@ script = ExtResource("10_unapl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger/Tigger 2"]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_vg6y8")
+
+[node name="Door_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_gw4by")
 
 [connection signal="body_entered" from="Trigger/Tigger 1" to="Trigger/Tigger 1" method="_on_body_entered"]
 [connection signal="body_exited" from="Trigger/Tigger 1" to="Trigger/Tigger 1" method="_on_body_exited"]

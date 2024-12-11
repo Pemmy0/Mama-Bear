@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://duucgshv53yp5"
+path="res://.godot/imported/Living Room Scene 4.mp3-ad9f2962c1992cb2971aa51c57d59ed8.mp3str"
+
+[deps]
+
+source_file="res://SFX/Room Ambience/Living Room Scene 4.mp3"
+dest_files=["res://.godot/imported/Living Room Scene 4.mp3-ad9f2962c1992cb2971aa51c57d59ed8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

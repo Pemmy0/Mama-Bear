@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dcb1xejew167v"
+path="res://.godot/imported/Corridor.mp3-d0c2ca405a9d358d57808bca03fbc3fe.mp3str"
+
+[deps]
+
+source_file="res://SFX/Room Ambience/Corridor.mp3"
+dest_files=["res://.godot/imported/Corridor.mp3-d0c2ca405a9d358d57808bca03fbc3fe.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

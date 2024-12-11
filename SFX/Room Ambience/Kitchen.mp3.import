@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0bvnvqfjhssl"
+path="res://.godot/imported/Kitchen.mp3-e0d026463f554a4c7f7fad22d6392548.mp3str"
+
+[deps]
+
+source_file="res://SFX/Room Ambience/Kitchen.mp3"
+dest_files=["res://.godot/imported/Kitchen.mp3-e0d026463f554a4c7f7fad22d6392548.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

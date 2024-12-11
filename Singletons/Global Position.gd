@@ -1,5 +1,7 @@
 extends Node
 
+var current_room = ""
+
 var to_corridor = true
 var to_livingroom = true
 var to_living_from_kitchen = true

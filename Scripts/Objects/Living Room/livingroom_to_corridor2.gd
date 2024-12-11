@@ -5,6 +5,8 @@ var player
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
+	GlobalPosition.current_room = "livingroom2"
+	RoomAmbience.play_room_ambience()
 	if GlobalPosition.to_livingroom:
 		player.animated_sprite_2d.flip_h = true
 		GlobalPosition.to_livingroom = false
