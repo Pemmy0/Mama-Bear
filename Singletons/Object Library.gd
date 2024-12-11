@@ -6,7 +6,6 @@ var mama_walk_anim = false
 
 var kitchen_has_entered = false
 var bathroom_has_entered = false
-var trigger_door_bell = false
 var trigger_phone_notification = false
 
 var use_them_dialogue = false
@@ -74,9 +73,6 @@ var corridor_cabinet_top: Array[String] = [
 ]
 var corridor_cabinet_bot: Array[String] = [
 	"There is a ring inside!", "It is so pretty!"
-]
-var corridor_to_living: Array[String] = [
-	"I need to look for Greeni and Yellowi!"
 ]
 #choices
 var corridor_urn_choice1: Array[String] = [

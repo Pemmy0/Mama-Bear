@@ -4,7 +4,6 @@ extends Area2D
 @onready var audio_stream_player = $AudioStreamPlayer
 
 var player
-var lines = ObjectLibrary.corridor_to_living
 
 func _ready():
 	ObjectLibrary.has_interacted_teddy = false
@@ -29,4 +28,7 @@ func _on_body_exited(_body):
 func scene_transition():
 	TransitionScreen.transition()
 	await TransitionScreen.on_transition_finished
-	get_tree().change_scene_to_file("res://Scenes/Main Scenes/scene_5_livingroom.tscn")
+	if ObjectLibrary.has_interacted_lizard:
+		get_tree().change_scene_to_file("res://Scenes/Main Scenes/scene_5_livingroom.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Scenes/Main Scenes/scene_4_livingroom.tscn")
