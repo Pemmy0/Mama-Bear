@@ -8,4 +8,5 @@ func _on_body_entered(_body):
 func _on_body_exited(_body):
 	object.play("Default")
 	MonologueManager.dialog_ended = false
+	DialogueManager.dialog_ended = false
 	
