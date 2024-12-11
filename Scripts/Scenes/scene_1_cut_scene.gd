@@ -14,8 +14,9 @@ func _ready():
 	cutscene.play("Default")
 	
 func _process(delta):
-	if Input.is_action_just_pressed("Interact"):
+	if Input.is_anything_pressed():
 		stop_loop = true
+		$AnimationPlayer.play("start animation")
 		
 func load_sfx(sfx_to_load):
 	if audio_stream_player.stream != sfx_to_load:
