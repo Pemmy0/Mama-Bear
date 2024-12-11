@@ -17,4 +17,4 @@ func _on_body_entered(body):
 		ObjectLibrary.has_interacted_livingroom_1 = true
 		
 func _on_body_exited(body):
-	DialogueManager.dialog_ended = false
+	MonologueManager.dialog_ended = false
