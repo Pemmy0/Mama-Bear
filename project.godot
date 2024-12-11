@@ -21,6 +21,7 @@ GlobalPosition="*res://Singletons/Global Position.gd"
 TransitionScreen="*res://Scenes/UI/transition_screen.tscn"
 ObjectLibrary="*res://Singletons/Object Library.gd"
 DialogueManager="*res://Singletons/Dialogue Manager.gd"
+RoomAmbience="*res://Scenes/room_ambience.tscn"
 
 [display]
 

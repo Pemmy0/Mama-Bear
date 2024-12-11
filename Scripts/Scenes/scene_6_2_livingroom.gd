@@ -27,8 +27,10 @@ var stop_loop = false
 var hand_raise_once = true
 
 func _ready():
+	GlobalPosition.current_room = "livingroom2"
 	DialogueManager.text_box_scene = preload("res://Scenes/UI/text_box.tscn")
 	DialogueManager.dialog_ended = false
+	DialogueManager.can_advance_line = false
 	assign_new_line()
 	go_to_next()
 	%TV.play("Default")

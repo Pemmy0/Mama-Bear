@@ -22,8 +22,10 @@ var has_interacted = false
 var play_dialogue = true
 
 func _ready():
+	GlobalPosition.current_room = "livingroom2"
 	DialogueManager.text_box_scene = preload("res://Scenes/UI/text_box_right.tscn")
 	DialogueManager.dialog_ended = false
+	DialogueManager.can_advance_line = false
 	assign_new_line()
 	go_to_next()
 	%Dada.play("Default")
@@ -39,6 +41,7 @@ func _process(delta):
 	):
 		if test == ObjectLibrary.final_fight_3:
 			DialogueManager.dialog_ended = false
+			DialogueManager.can_advance_line = false
 			ObjectLibrary.mama_move_allowed = true
 			ObjectLibrary.mama_walk_anim = true
 			play_dialogue = false

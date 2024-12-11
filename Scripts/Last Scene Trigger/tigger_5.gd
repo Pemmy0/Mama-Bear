@@ -1,6 +1,7 @@
 extends Area2D
 
 func _on_body_entered(body):
+	GlobalPosition.current_room = ""
 	scene_transition()
 
 func scene_transition():

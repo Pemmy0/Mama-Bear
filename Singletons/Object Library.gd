@@ -6,7 +6,6 @@ var mama_walk_anim = false
 
 var kitchen_has_entered = false
 var bathroom_has_entered = false
-var trigger_door_bell = false
 var trigger_phone_notification = false
 
 var use_them_dialogue = false
@@ -29,6 +28,8 @@ var timmy_box = false
 
 var call_final_2 = false
 var call_final_3 = false
+
+var has_played_ambience = false
 
 #Bedroom
 var bedroom_bed: Array[String] = [
@@ -74,9 +75,6 @@ var corridor_cabinet_top: Array[String] = [
 ]
 var corridor_cabinet_bot: Array[String] = [
 	"There is a ring inside!", "It is so pretty!"
-]
-var corridor_to_living: Array[String] = [
-	"I need to look for Greeni and Yellowi!"
 ]
 #choices
 var corridor_urn_choice1: Array[String] = [
@@ -351,3 +349,7 @@ var final_fight_5 = {
 	"Mama5": "No.",
 	"Mama6": "He wont be coming with us"
 }
+var ending: Array[String] = [
+	"Mama said we are going on a vacation", "But it has been so long", 
+	"I miss the yellow house. . .", "And I miss dad."
+]

@@ -5,6 +5,8 @@ var player
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
+	GlobalPosition.current_room = "kitchen"
+	RoomAmbience.play_room_ambience()
 	GlobalPosition.to_living_from_kitchen = false
 	ObjectLibrary.kitchen_has_entered = true
 	pointer.hide()

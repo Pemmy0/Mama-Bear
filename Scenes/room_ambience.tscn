@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn3sqxvxmg5y5"]
+
+[ext_resource type="Script" path="res://Singletons/room_ambience_control.gd" id="1_t54h5"]
+
+[node name="Room Ambience" type="Node"]
+script = ExtResource("1_t54h5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

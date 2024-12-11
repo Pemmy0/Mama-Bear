@@ -24,10 +24,11 @@ var start_tansition = false
 func _ready():
 	DialogueManager.text_box_scene = preload("res://Scenes/UI/text_box_right.tscn")
 	ObjectLibrary.timmy_move_allowed = false
+	DialogueManager.can_advance_line = false
 	key_holder = test.keys()
 	value_holder = test.values()
+	current_index = 0
 	go_to_next()
-	
 	for text in value_holder:
 		n += 1
 		msg.append(value_holder[n-1])
@@ -50,6 +51,7 @@ func _unhandled_input(_event):
 		if DialogueManager.can_advance_line:
 			current_index += 1
 			go_to_next()
+			print(current_index)
 		if DialogueManager.dialog_ended:
 			return
 		DialogueManager.start_dialog(msg)

@@ -34,7 +34,7 @@ size = Vector2(20, 203.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y5dnj"]
 size = Vector2(20, 230)
 
-[node name="Scene 2 Corridor" type="Node"]
+[node name="Scene 4 Corridor" type="Node"]
 
 [node name="Timmy" parent="." instance=ExtResource("2_oxvlr")]
 z_index = 5

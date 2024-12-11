@@ -19,11 +19,11 @@ func _ready():
 		player.position.x = GlobalPosition.parents_door_position.x
 		GlobalPosition.to_living_from_parents = true
 	pointer.hide()
-	
+
 func _process(delta):
 	if !ObjectLibrary.bathroom_has_entered && ObjectLibrary.kitchen_has_entered:
 		lines = ObjectLibrary.living_room_parents_2
-		
+
 func load_sfx(sfx_to_load):
 	if audio_stream_player.stream != sfx_to_load:
 		audio_stream_player.stop()
@@ -35,7 +35,7 @@ func _on_body_entered(_body):
 
 func _on_body_exited(_body):
 	pointer.hide()
-	DialogueManager.dialog_ended = false
+	MonologueManager.dialog_ended = false
 	
 func scene_transition():
 	load_sfx(door_open)

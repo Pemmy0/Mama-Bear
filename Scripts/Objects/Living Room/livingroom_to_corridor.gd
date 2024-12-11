@@ -5,6 +5,8 @@ var player
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
+	GlobalPosition.current_room = "livingroom"
+	RoomAmbience.play_room_ambience()
 	if GlobalPosition.to_livingroom:
 		player.animated_sprite_2d.flip_h = true
 		GlobalPosition.to_livingroom = false
@@ -20,4 +22,4 @@ func _on_body_exited(_body):
 func scene_transition():
 	TransitionScreen.transition()
 	await TransitionScreen.on_transition_finished
-	get_tree().change_scene_to_file("res://Scenes/Main Scenes/scene_4_corridor.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Main Scenes/scene_2_corridor.tscn")
