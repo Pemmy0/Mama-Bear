@@ -9,6 +9,8 @@ var ending_timer:float = 0
 
 func _ready():
 	MonologueManager.text_box_scene = preload("res://Scenes/UI/text_last_scene.tscn")
+	MonologueManager.dialog_ended = false
+	MonologueManager.can_advance_line = false
 	
 func _process(delta):
 	if (

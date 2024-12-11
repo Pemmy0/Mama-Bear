@@ -17,6 +17,8 @@ var n = 0
 var player_in_area = false
 
 func _ready():
+	DialogueManager.dialog_ended = false
+	DialogueManager.can_advance_line = false
 	current_index = 0
 	key_holder = test.keys()
 	value_holder = test.values()
@@ -42,12 +44,12 @@ func _unhandled_input(event):
 			go_to_next()
 
 func _on_body_entered(body):
-	ObjectLibrary.mama_move_allowed = false
 	go_to_next()
 	player_in_area = true
-	if MonologueManager.dialog_ended:
+	if DialogueManager.dialog_ended:
 		return
 	DialogueManager.start_dialog(msg)
+	ObjectLibrary.mama_move_allowed = false
 		
 func _on_body_exited(_body):
 	current_index = 0
