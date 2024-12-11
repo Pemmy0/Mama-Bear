@@ -11,14 +11,13 @@ var lines = ObjectLibrary.trigger_livingroom_3
 
 func _ready():
 	event_trigger_timer = 2
-	ObjectLibrary.trigger_door_bell = true
 	ObjectLibrary.timmy_move_allowed = false
 		
 func _process(delta):
 	if event_trigger_timer > 0:
 		event_trigger_timer -= delta
 	
-	if ObjectLibrary.trigger_door_bell && ObjectLibrary.has_interacted_lizard:
+	if ObjectLibrary.has_interacted_lizard:
 		if event_trigger_timer > 1 && event_trigger_timer < 1.1:
 			load_sfx(sfx_doorbell)
 			audio_stream_player.play()
