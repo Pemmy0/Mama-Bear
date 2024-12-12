@@ -26,6 +26,7 @@ func _ready():
 	DialogueManager.text_box_scene = preload("res://Scenes/UI/text_box_right.tscn")
 	DialogueManager.dialog_ended = false
 	DialogueManager.can_advance_line = false
+	ObjectLibrary.has_transitioned = false
 	assign_new_line()
 	go_to_next()
 	%Dada.play("Default")

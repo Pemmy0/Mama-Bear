@@ -74,7 +74,7 @@ size = Vector2(20, 203.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g8ws1"]
 size = Vector2(20, 230)
 
-[node name="scene_3_parents_room" type="Node"]
+[node name="scene_4_parents_room" type="Node"]
 script = ExtResource("1_1r4kl")
 
 [node name="Timmy" parent="." instance=ExtResource("1_vtywt")]
@@ -88,7 +88,7 @@ position = Vector2(264, 172)
 
 [node name="Environment" type="Node" parent="."]
 
-[node name="dialogue_trigger_kitchen1" parent="Environment" node_paths=PackedStringArray("player", "marker") instance=ExtResource("3_e5xvn")]
+[node name="dialogue_trigger_parentroom" parent="Environment" node_paths=PackedStringArray("player", "marker") instance=ExtResource("3_e5xvn")]
 position = Vector2(75, 226)
 player = NodePath("../../Timmy")
 marker = NodePath("../../Marker/MamaMarker")

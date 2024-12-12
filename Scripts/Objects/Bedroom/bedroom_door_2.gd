@@ -12,6 +12,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	GlobalPosition.current_room = "bedroom"
 	RoomAmbience.play_room_ambience()
+	ObjectLibrary.has_transitioned = false
 	if !GlobalPosition.to_corridor:
 		load_sfx(door_close)
 		audio_stream_player.pitch_scale += randf_range(-0.2, 0.2)

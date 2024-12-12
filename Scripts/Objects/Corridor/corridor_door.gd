@@ -13,6 +13,7 @@ func _ready():
 	GlobalPosition.current_room = "corridor"
 	RoomAmbience.play_room_ambience()
 	ObjectLibrary.has_played_ambience = false
+	ObjectLibrary.has_transitioned = false
 	load_sfx(door_close)
 	audio_stream_player.pitch_scale += randf_range(-0.2, 0.2)
 	if GlobalPosition.to_livingroom:
