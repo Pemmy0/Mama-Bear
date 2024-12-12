@@ -23,6 +23,8 @@ func _ready():
 	value_holder = test.values()
 	pointer.hide()
 	object.play("Default")
+	DialogueManager.dialog_ended = false
+	DialogueManager.can_advance_line = false
 	$Cols.disabled = false
 	
 	for text in value_holder:

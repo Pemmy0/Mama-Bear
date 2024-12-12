@@ -14,6 +14,7 @@ func _ready():
 	RoomAmbience.play_room_ambience()
 	event_trigger_timer = 2
 	ObjectLibrary.timmy_move_allowed = false
+	ObjectLibrary.has_transitioned = false
 		
 func _process(delta):
 	if event_trigger_timer > 0:
