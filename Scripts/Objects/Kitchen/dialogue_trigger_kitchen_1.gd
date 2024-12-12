@@ -30,6 +30,8 @@ func _unhandled_input(event):
 			go_to_next()
 
 func _on_body_entered(body):
+	DialogueManager.can_advance_line = false
+	DialogueManager.dialog_ended = false
 	go_to_next()
 	player_in_area = true
 	if body.is_in_group("player") && !ObjectLibrary.has_interacted_kitchen1:

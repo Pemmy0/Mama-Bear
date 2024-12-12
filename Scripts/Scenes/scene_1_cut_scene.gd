@@ -22,10 +22,9 @@ func _ready():
 	RoomAmbience.play_room_ambience()
 	ObjectLibrary.has_played_ambience = true
 	
-func _process(delta):
+func _unhandled_input(event):
 	if Input.is_anything_pressed():
 		stop_loop = true
-		$AnimationPlayer.play("start animation")
 		
 func load_sfx(sfx_to_load):
 	if audio_stream_player.stream != sfx_to_load:
@@ -37,6 +36,7 @@ func _on_cutscene_animation_finished():
 		if !stop_loop:
 			cutscene.play("Default")
 		else:
+			$AnimationPlayer.play("start animation")
 			cutscene.play("Waking Up")
 	elif cutscene.animation == "Waking Up":
 		cutscene.play("Walk And Hat")

@@ -30,6 +30,8 @@ func _unhandled_input(_event):
 			go_to_next()
 
 func _on_body_entered(body):
+	DialogueManager.can_advance_line = false
+	DialogueManager.dialog_ended = false
 	go_to_next()
 	player_in_area = true
 	if (
@@ -46,6 +48,7 @@ func _on_body_exited(_body):
 	current_index = -1
 	DialogueManager.text_box_position = Vector2.ZERO
 	DialogueManager.dialog_ended = false
+	MonologueManager.dialog_ended = false
 	player_in_area = false
 		
 func go_to_next():

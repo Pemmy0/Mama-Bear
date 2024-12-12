@@ -35,7 +35,7 @@ func _on_body_entered(body):
 	go_to_next()
 	player_in_area = true
 	if body.is_in_group("player") && !ObjectLibrary.has_interacted_livingroom_2:
-		if MonologueManager.dialog_ended:
+		if DialogueManager.dialog_ended:
 			return
 		DialogueManager.start_dialog(msg)
 		ObjectLibrary.has_interacted_livingroom_2 = true
