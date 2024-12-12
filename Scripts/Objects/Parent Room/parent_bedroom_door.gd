@@ -18,6 +18,7 @@ func _ready():
 	GlobalPosition.to_living_from_parents = false
 	ObjectLibrary.bathroom_has_entered = false
 	ObjectLibrary.kitchen_has_entered = false
+	ObjectLibrary.has_transitioned = false
 	pointer.hide()
 	
 func load_sfx(sfx_to_load):

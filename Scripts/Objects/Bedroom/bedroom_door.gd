@@ -10,6 +10,7 @@ var player
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
+	ObjectLibrary.has_transitioned = false
 	GlobalPosition.current_room = "bedroom"
 	if !ObjectLibrary.has_played_ambience:
 		RoomAmbience.play_room_ambience()

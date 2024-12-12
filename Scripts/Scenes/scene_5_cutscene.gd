@@ -24,6 +24,7 @@ var start_tansition = false
 func _ready():
 	DialogueManager.text_box_scene = preload("res://Scenes/UI/text_box_right.tscn")
 	ObjectLibrary.timmy_move_allowed = false
+	ObjectLibrary.has_transitioned = false
 	DialogueManager.can_advance_line = false
 	key_holder = test.keys()
 	value_holder = test.values()
@@ -34,18 +35,14 @@ func _ready():
 		msg.append(value_holder[n-1])
 		
 func _process(delta):
-	if ending_timer > 0:
-		ending_timer -= delta
-		
 	if (
 		Input.is_action_just_pressed("Interact") &&
-		!DialogueManager.is_dialog_active && DialogueManager.dialog_ended
+		!DialogueManager.is_dialog_active && DialogueManager.dialog_ended &&
+		!ObjectLibrary.has_transitioned
 	):
-		DialogueManager.choice_start = true
-		
-	if ending_timer > 0.01 && ending_timer < 0.03:
+		ObjectLibrary.has_transitioned = true
 		scene_transition()
-
+		
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("Interact"):
 		if DialogueManager.can_advance_line:
@@ -55,10 +52,6 @@ func _unhandled_input(_event):
 		if DialogueManager.dialog_ended:
 			return
 		DialogueManager.start_dialog(msg)
-		
-	if DialogueManager.choice_start:
-		ending_timer = 1
-		DialogueManager.choice_start = false
 
 func load_sfx(sfx_to_load):
 	if audio_stream_player.stream != sfx_to_load:

@@ -17,6 +17,7 @@ func _ready():
 	audio_stream_player.play()
 	GlobalPosition.to_living_from_bathroom = false
 	ObjectLibrary.bathroom_has_entered = true
+	ObjectLibrary.has_transitioned = false
 	pointer.hide()
 	
 func load_sfx(sfx_to_load):

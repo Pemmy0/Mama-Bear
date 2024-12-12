@@ -9,6 +9,7 @@ func _ready():
 	RoomAmbience.play_room_ambience()
 	GlobalPosition.to_living_from_kitchen = false
 	ObjectLibrary.kitchen_has_entered = true
+	ObjectLibrary.has_transitioned = false
 	pointer.hide()
 
 func _on_body_entered(_body):

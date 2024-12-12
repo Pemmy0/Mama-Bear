@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Timmy
 
-@export var SPEED = 75.0
+@export var SPEED = 75.0 + 400
 @export var sfx_footstep: AudioStream
 @export var sfx_interact: AudioStream
 
@@ -137,14 +137,18 @@ func _on_interact_area_entered(area):
 		temp_choice_lines2 = area.choice_lines2
 		
 	if area.is_in_group("doors"):
-		area.scene_transition()
+		if !ObjectLibrary.has_transitioned:
+			ObjectLibrary.has_transitioned = true
+			area.scene_transition()
 		
 	if area.is_in_group("special doors"):
 		if (
 			ObjectLibrary.bathroom_has_entered && ObjectLibrary.kitchen_has_entered ||
 			ObjectLibrary.has_interacted_teddy || ObjectLibrary.has_interacted_lizard
 		):
-			area.scene_transition()
+			if !ObjectLibrary.has_transitioned:
+				ObjectLibrary.has_transitioned = true
+				area.scene_transition()
 		else:
 			if MonologueManager.dialog_ended:
 				return

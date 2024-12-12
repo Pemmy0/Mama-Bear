@@ -30,6 +30,7 @@ var call_final_2 = false
 var call_final_3 = false
 
 var has_played_ambience = false
+var has_transitioned = false
 
 #Bedroom
 var bedroom_bed: Array[String] = [

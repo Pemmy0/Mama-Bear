@@ -11,6 +11,7 @@ func _ready():
 	GlobalPosition.current_room = "livingroom2"
 	MonologueManager.can_advance_line = false
 	ObjectLibrary.timmy_move_allowed = false
+	ObjectLibrary.has_transitioned = false
 	MonologueManager.text_box_scene = preload("res://Scenes/UI/text_box_right.tscn")
 	%TV.play("Default")
 	
