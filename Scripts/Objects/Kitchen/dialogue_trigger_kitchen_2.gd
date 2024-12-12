@@ -19,6 +19,8 @@ var player_in_area = false
 func _ready():
 	key_holder = test.keys()
 	value_holder = test.values()
+	DialogueManager.can_advance_line = false
+	DialogueManager.dialog_ended = false
 	
 	for text in value_holder:
 		n += 1
