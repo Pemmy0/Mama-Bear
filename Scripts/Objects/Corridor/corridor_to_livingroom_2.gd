@@ -6,7 +6,6 @@ extends Area2D
 var player
 
 func _ready():
-	ObjectLibrary.has_interacted_teddy = false
 	player = get_tree().get_first_node_in_group("player")
 	if !GlobalPosition.to_livingroom:
 		player.animated_sprite_2d.flip_h = true
