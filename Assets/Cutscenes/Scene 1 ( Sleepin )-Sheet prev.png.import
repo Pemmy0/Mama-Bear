@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxqf5dqewggm8"
-path="res://.godot/imported/Scene 1 ( Sleepin )-Sheet.png-895659a5505db3cf1b789fe83c2df91a.ctex"
+uid="uid://bot2kf54iglqw"
+path="res://.godot/imported/Scene 1 ( Sleepin )-Sheet prev.png-b415e951412b3b2883af8141a6a220bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Cutscenes/Scene 1 ( Sleepin )-Sheet.png"
-dest_files=["res://.godot/imported/Scene 1 ( Sleepin )-Sheet.png-895659a5505db3cf1b789fe83c2df91a.ctex"]
+source_file="res://Assets/Cutscenes/Scene 1 ( Sleepin )-Sheet prev.png"
+dest_files=["res://.godot/imported/Scene 1 ( Sleepin )-Sheet prev.png-b415e951412b3b2883af8141a6a220bb.ctex"]
 
 [params]
 
