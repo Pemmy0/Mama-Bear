@@ -38,9 +38,6 @@ func _ready():
 	dada.play("Dad n Bean")
 		
 func _process(delta):
-	if ending_timer > 0:
-		ending_timer -= delta
-	
 	if test == ObjectLibrary.final_fight_1:
 		if current_index >= 4 && test == ObjectLibrary.final_fight_1:
 			DialogueManager.text_box_scene = preload("res://Scenes/UI/text_box_right.tscn")
@@ -56,14 +53,10 @@ func _process(delta):
 			assign_new_line()
 		
 		if test == ObjectLibrary.final_fight_2 && current_index > 1:
-			ending_timer += 1
+			if !ObjectLibrary.has_transitioned:
+				ObjectLibrary.has_transitioned = true
+				scene_transition()
 			
-	if (
-		ending_timer > 0.01 && ending_timer < 0.03 &&
-		test == ObjectLibrary.final_fight_2
-	):
-		scene_transition()
-
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Interact"):
 		if DialogueManager.can_advance_line:
